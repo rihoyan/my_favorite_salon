@@ -4,16 +4,25 @@
     <title>MyFavoriteSalon</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/442d465ed4.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <nav class="navber">
-      <div class="navber-header">
-        <p>ログイン画面統一</p>
+    <nav class="navber navber-expand-lg navber-light">
+      <div class="container">
+        <div class="nav navber-nav p-3">
+          <%= link_to image_tag("logo.png",class: "navber-brand"), root_path %>
+          <ul class="nav navber-nav ml-auto">
+            <li class="nav-item"><%= link_to "ログイン", new_customer_session_path, class: "nav-link text-dark" %></li>
+            <li class="nav-item"><%= link_to "ゲストログイン", customers_guest_sign_in_path,class: "nav-link text-dark" %></li>
+            <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-dark" %></li>
+          </ul>
+        </div>
       </div>
     </nav>
-    <%= yield %>
+      <%= yield %>
+
   </body>
 </html>
