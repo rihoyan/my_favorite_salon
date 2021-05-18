@@ -1,5 +1,7 @@
 {
   "name": "my_favorite_salon",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "eslint": "^7.26.0"
+  }
 }
