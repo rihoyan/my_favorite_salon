@@ -10,9 +10,9 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+     super
+   end
 
   # GET /resource/edit
   # def edit
@@ -37,6 +37,10 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+
+  def after_sign_up_path_for(resource)
+    customers_path(resource)
+  end
 
    protected
 

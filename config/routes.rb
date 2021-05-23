@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   root to: 'homes#top'
+  get "manager" => "homes#manager"
 
   devise_for :admins,controllers: {
     sessions: 'admins/sessions',
@@ -18,9 +20,13 @@ Rails.application.routes.draw do
     passwords: 'customers/passwords',
     registrations: 'customers/registrations'
   }
-  
-  devise_scope :customers do
-    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in' 
+
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+  end
+
+  scope module: :customers do
+    resource :customers, only: [:show]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

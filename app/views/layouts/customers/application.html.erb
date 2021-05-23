@@ -10,9 +10,27 @@
   </head>
 
   <body>
-    <nav class="navber">
-      <div class="navber-header">
-        <p>てすと</p>
+    <nav class="navber navber-expand-lg navber-light fixed-top" style="background-color: #e3f2fd;">
+      <div class="container">
+        <div class="nav navber-nav p-3">
+          <%= link_to image_tag("logo.png",class: "navber-brand"), root_path %>
+
+          <% if customer_signed_in? %>
+          <ul class="nav navber-nav ml-auto">
+            <li class="nav-item"><%= link_to "スタイルブック", root_path, class: "nav-link text-dark" %></li>
+            <li class="nav-item"><%= link_to "見つける", root_path,class: "nav-link text-dark" %></li>
+            <li class="nav-item"><%= link_to "マイページ", customers_path, class: "nav-link text-dark" %></li>
+            <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path,method: :delete, class: "nav-link text-dark" %></li>
+          </ul>
+
+          <% else %>
+          <ul class="nav navber-nav ml-auto">
+            <li class="nav-item"><%= link_to "ログイン", new_customer_session_path, class: "nav-link text-dark" %></li>
+            <li class="nav-item"><%= link_to "ゲストログイン", customers_guest_sign_in_path,class: "nav-link text-dark",method: :post %></li>
+            <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-dark" %></li>
+          </ul>
+          <% end %>
+        </div>
       </div>
     </nav>
     <%= yield %>

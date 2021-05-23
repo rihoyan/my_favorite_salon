@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row position-relative">
+  <div class="row">
     <div class="col-lg-6">
       <%= image_tag "top.png", size: "764x512" %>
     </div>
@@ -9,16 +9,106 @@
         <h5>いつでも大好きな自分でいよう</h5>
       </div>
     </div>
+  </div>
+  <div class="top-comment">
+    お気に入りの美容院をカンタン予約</br>
+    予約時にスタイリングの希望画像も送れます
+  </div>
 
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="top-link d-flex flex-column">-->
-        <!--<%= link_to "初めての方",new_customer_registration_path, class: "btn btn-outline-info mb-3" %>-->
-        <!--<%= link_to "登録済みの方",new_customer_session_path, class: "btn btn-outline-info mb-3" %>-->
-        <!--<%= link_to "ゲストログイン(ポートフォリオ用)",customers_guest_sign_in_path,method: :post,class: "btn btn-outline-info" %>-->
-      <!--</div>-->
+  <div class="card top-card my-5">
+    <div class="top-label-left px-3">
+      <span class="top-number mr-3">o1</span>美容院を登録する
+    </div>
+    <div class="row g-0">
+      <div class="col-lg-6">
+        <div class="card-body mt-3">
+          <p>お気に入りの美容院を検索して</br>
+          登録をしておけば</br>
+          いつでもカンタンに予約ができます</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <%= image_tag "top.png", size: "300x200" %>
+      </div>
     </div>
   </div>
+
+  <div class="card top-card">
+    <div class="top-label-right px-3">
+      <span class="top-number mr-3">o2</span>予約する
+    </div>
+    <div class="row g-0">
+      <div class="col-lg-6">
+        <%= image_tag "top.png", size: "300x200" %>
+      </div>
+      <div class="col-lg-6">
+        <div class="card-body mt-3">
+          <p>予約時に希望スタイリングの画像も送れます</br>
+          どんなスタイリングが好きか</br>
+          カンタンに伝えられるから</br>
+          切ったあとの「なんか違う・・・」が無くなります
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="card top-card my-5">
+    <div class="top-label-left px-3">
+      <span class="top-number mr-3">o3</span>スタイリング履歴が残せます
+    </div>
+    <div class="row g-0">
+      <div class="col-lg-6">
+        <div class="card-body mt-3">
+          <p>カラーの色やお手入れ方法など</br>
+          美容師さんからコメント付きで履歴が残ります</br>
+          お手入れ方法を教えてくれるから</br>
+          いい状態がキープできる!</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <%= image_tag "top.png", size: "300x200" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="card top-card">
+    <div class="top-label-right px-3">
+      <span class="top-number mr-3">o4</span>初めての美容院でも安心
+    </div>
+    <div class="row g-0">
+      <div class="col-lg-6">
+        <%= image_tag "top.png", size: "300x200" %>
+      </div>
+      <div class="col-lg-6">
+        <div class="card-body mt-3">
+          <p>好きなスタイルをたくさん選んでおくと</br>
+          自分の好みが美容師さんに伝わりやすくなります</br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="top-comment">
+    <p>いつでも大好きな</br>
+    自分でいよう</p>
+    <%= link_to "初めての方はこちらから", new_customer_registration_path , class: "btn btn-outline-dark" %>
+  </div>
 </div>
+
+  <nav class="footer pt-5" style="background-color: #e3f2fd;">
+      <div class="container">
+        <ul class="nav navber-nav">
+          <li class="nav-item"><%= link_to "お問い合わせ", root_path, class: "nav-link text-dark" %></li>
+          <li class="nav-item"><%= link_to "サイト制作者", manager_path,class: "nav-link text-dark" %></li>
+        </ul>
+        <p class="text-center">(c) Riho Miyakawa ポートフォリオ制作委員会</p>
+      </div>
+    </nav>
+
+
+
+
 
 

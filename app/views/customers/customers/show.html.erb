@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-5">
+      <%= @customer.nickname %></br>
+      <%= attachment_image_tag @customer, :profile_image, :fill,200,200, fallback: "woman.png", size: '200x200', class: "border border-secondary rounded-circle" %>
+    </div>
+    <div class="col-lg-7">
+      <div class="">
+        <p>My 美容院</p>
+      </div>
+      <div class="">
+        <p>スタイリング履歴</p>
+      </div>
+      <div class="">
+        <p>Favorite</br>
+            Style</p>
+      </div>
+      <div class="">
+        <p>基本情報変更</p>
+      </div>
+    </div>
+  </div>
+</div>
