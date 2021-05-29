@@ -18,7 +18,7 @@
           <% if customer_signed_in? %>
           <ul class="nav navber-nav ml-auto">
             <li class="nav-item"><%= link_to "スタイルブック", root_path, class: "nav-link text-dark" %></li>
-            <li class="nav-item"><%= link_to "見つける", root_path,class: "nav-link text-dark" %></li>
+            <li class="nav-item"><%= link_to "見つける", salons_index_path,class: "nav-link text-dark" %></li>
             <li class="nav-item"><%= link_to "マイページ", customers_path, class: "nav-link text-dark" %></li>
             <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path,method: :delete, class: "nav-link text-dark" %></li>
           </ul>

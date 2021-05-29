@@ -1,0 +1,22 @@
+<div class="container">
+  <h3 class="title my-4 text-center">美容院を探す</h3>
+  <h4>検索結果<%= @salons.count %>件</h4>
+  
+  <% @salons.each do |salon| %>
+    <div class="card", style="width: 18rem;">
+      <%= attachment_image_tag @salon, :salon_image, :fill,100,100,fallback: "logo.png",class: "card-image-top" %>
+      <div class="card-body">
+        <h5 class="card-title"><%= salon.name %></h5>
+        <p class="card-text">
+          <%= salon.address %>
+          <% salon.menus.each do |menu| %>
+            <ul>
+             <li><%= salon.menus.name %></li>
+            </ul>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+  
+</div>

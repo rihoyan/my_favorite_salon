@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  salon: one
+  name: MyString
+  time: 1
+  price: 1
+
+two:
+  salon: two
+  name: MyString
+  time: 1
+  price: 1

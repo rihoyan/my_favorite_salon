@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_29_080407) do
+ActiveRecord::Schema.define(version: 2021_05_29_165937) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -42,6 +42,39 @@ ActiveRecord::Schema.define(version: 2021_05_29_080407) do
     t.boolean "active", default: true
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "salon_id"
+    t.integer "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_favorites_on_customer_id"
+    t.index ["salon_id"], name: "index_favorites_on_salon_id"
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.integer "salon_id"
+    t.string "name"
+    t.integer "time"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["salon_id"], name: "index_menus_on_salon_id"
+  end
+
+  create_table "municipalities", force: :cascade do |t|
+    t.string "city_name"
+    t.integer "prefecture_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prefecture_id"], name: "index_municipalities_on_prefecture_id"
+  end
+
+  create_table "prefectures", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "salons", force: :cascade do |t|

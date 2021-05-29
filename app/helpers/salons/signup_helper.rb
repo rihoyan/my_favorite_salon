@@ -1,0 +1,2 @@
+module Salons::SignupHelper
+end

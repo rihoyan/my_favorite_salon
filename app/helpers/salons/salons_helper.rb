@@ -1,0 +1,2 @@
+module Salons::SalonsHelper
+end

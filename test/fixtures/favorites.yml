@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  salon: one
+  customer: one
+
+two:
+  salon: two
+  customer: two
