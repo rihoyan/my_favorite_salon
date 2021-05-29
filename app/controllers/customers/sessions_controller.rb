@@ -2,11 +2,13 @@
 
 class Customers::SessionsController < Devise::SessionsController
    before_action :configure_permitted_parameters, only: [:create, :guest_sign_in]
+   layout 'customers/application'
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+   def new
+     super
+    flash[:success] = "ログインしました！"
+   end
 
   # POST /resource/sign_in
   # def create
@@ -24,10 +26,10 @@ class Customers::SessionsController < Devise::SessionsController
 
   def guest_sign_in
     customer = Customer.find_or_create_by!(telephone_number: '09011112222',email: 'sample@sample.com',last_name: '田中',first_name: 'りほこ',last_name_kana: 'タナカ', first_name_kana: 'リホコ',nickname: 'りほこ') do |customer|
-      customer.password = SecureRandom.urlsafe_base64
+    customer.password = SecureRandom.urlsafe_base64
     end
     sign_in customer
-    redirect_to customers_path, notice: 'ゲストユーザーとしてログインしました！'
+    redirect_to customers_path, success: "ゲストユーザーとしてログインしました！"
   end
 
   protected

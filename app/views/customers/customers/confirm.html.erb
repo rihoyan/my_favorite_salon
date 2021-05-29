@@ -1,0 +1,10 @@
+<div class="container">
+  <h3 class="title my-4 text-center">退会ページ</h3>
+
+  <div class="form mx-auto" style="width: 700px;">
+    <p>退会すると予約履歴やスタイリング履歴はすべて見れなくなります</p></br>
+    <p>本当に退会しますか？</p>
+    <%= link_to "退会しない", customers_path, class: "btn btn-outline-dark" %>
+    <%= link_to "退会する", customers_destroy_path, method: :patch, class: "btn btn-dark" %>
+  </div>
+</div>
