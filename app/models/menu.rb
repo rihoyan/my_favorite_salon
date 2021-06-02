@@ -1,3 +1,4 @@
 class Menu < ApplicationRecord
-  belongs_to :salon
+  has_many :menu_salon
+  has_many :salons, through: :menu_salon
 end

@@ -1,0 +1,68 @@
+<div class="container">
+  <h3 class="title my-4 text-center">入力内容確認</h3>
+
+  <%= form_with model: @salon,url: salons_signup_index_path, local: true do |f| %>
+  <div class="row">
+    <table class="table col-lg-6">
+      <tr>
+        <th>店舗名</th>
+        <td><%= session[:name] %></td>
+      </tr>
+      <tr>
+        <th>店舗名（カナ）</th>
+        <td><%= session[:name_kana]%></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= session[:address] %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= session[:phone_number] %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= session[:email] %></td>
+      </tr>
+      <tr>
+        <th>パスワード</th>
+        <td><%= session[:password] %></td>
+      </tr>
+    </table>
+
+    <table class="table col-lg-6">
+      <tr>
+        <th>責任者名</th>
+        <td><%= session[:staff_name] %></td>
+      </tr>
+      <tr>
+        <th>営業開始時間</th>
+        <td><%= session[:start_time] %></td>
+        <th>営業終了時間</th>
+        <td><%= session[:end_time] %></td>
+      </tr>
+      <tr>
+        <th>シート数</th>
+        <td><%= session[:seats] %>席</td>
+        <th>スタイリスト数</th>
+        <td><%= session[:stylists] %>人</td>
+      </tr>
+      <tr>
+        <th>イメージ画像</th>
+        <td><%= @image_filename %></td>
+      </tr>
+      <tr>
+        <th>店舗説明</th>
+        <td><%= session[:introduction] %></td>
+      </tr>
+      <tr>
+        <th>メニュー</th>
+        <% Menu.find(session[:menu_ids]).each do |menu| %>
+          <td><%= menu.name %></td>
+        <% end %>
+      </tr>
+    </table>
+  <%= f.submit "登録", class: "form-control w-25 btn btn-outline-dark" %>
+  <% end %>
+  </div>
+</div>

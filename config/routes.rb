@@ -36,14 +36,18 @@ Rails.application.routes.draw do
     get 'salons/index'
     get 'salons/show'
     get 'salons/edit'
+  end
+
+  namespace :salons do
     resources :signup do
       collection do
         get 'step1'
         get 'step2'
+        get 'step3'
         get 'confirm'
-        get 'done'
       end
     end
   end
+
 
 end

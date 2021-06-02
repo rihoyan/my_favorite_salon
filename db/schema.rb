@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_29_165937) do
+ActiveRecord::Schema.define(version: 2021_06_02_175412) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_05_29_165937) do
     t.string "first_name", null: false
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
-    t.integer "profile_image_id"
+    t.string "profile_image_id"
     t.string "nickname"
     t.string "telephone_number", null: false
     t.datetime "created_at", null: false
@@ -53,14 +53,21 @@ ActiveRecord::Schema.define(version: 2021_05_29_165937) do
     t.index ["salon_id"], name: "index_favorites_on_salon_id"
   end
 
-  create_table "menus", force: :cascade do |t|
+  create_table "menu_salons", force: :cascade do |t|
     t.integer "salon_id"
+    t.integer "menu_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_id"], name: "index_menu_salons_on_menu_id"
+    t.index ["salon_id"], name: "index_menu_salons_on_salon_id"
+  end
+
+  create_table "menus", force: :cascade do |t|
     t.string "name"
     t.integer "time"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["salon_id"], name: "index_menus_on_salon_id"
   end
 
   create_table "municipalities", force: :cascade do |t|
@@ -89,7 +96,7 @@ ActiveRecord::Schema.define(version: 2021_05_29_165937) do
     t.string "name_kana", null: false
     t.string "address", null: false
     t.string "phone_number", null: false
-    t.integer "salon_image_id", null: false
+    t.string "salon_image_id", null: false
     t.time "start_time", null: false
     t.time "end_time", null: false
     t.integer "seats", null: false
