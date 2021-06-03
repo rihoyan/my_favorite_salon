@@ -16,9 +16,8 @@
       </div>
 
       <div class="form_group row mt-3">
-        <!----あとで変更する-->
         <%= f.label :address, "住所", class: "col-lg-4" %>
-        <%= f.text_field :address, autocomplete: "address",class: "col-lg-4 form-control" %>
+        <%= f.collection_select(:prefecture_id, @pref, :id, :name, {prompt: "県を選択してください"}) %>
       </div>
 
       <div class="form_group row mt-3">

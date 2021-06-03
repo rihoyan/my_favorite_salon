@@ -2,6 +2,7 @@ class Salons::SignupController < ApplicationController
 
   def step1
     @salon = Salon.new
+    @pref = Prefecture.all
   end
 
   def step2
