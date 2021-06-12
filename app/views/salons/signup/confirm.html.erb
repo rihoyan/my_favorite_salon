@@ -14,7 +14,7 @@
       </tr>
       <tr>
         <th>住所</th>
-        <td><%= session[:address] %></td>
+        <td><%= @pref.name %><%= @city.city_name %><%= session[:address] %></td>
       </tr>
       <tr>
         <th>電話番号</th>

@@ -3,16 +3,16 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'manager' => "homes#manager"
 
-  devise_for :admins,controllers: {
-    sessions: 'admins/sessions',
-    passwords: 'admins/passwords',
-    registrations: 'admins/registrations'
-  }
-
   devise_for :salons,controllers: {
     sessions: 'salons/sessions',
     passwords: 'salons/passwords',
     registrations: 'salons/registrations'
+  }
+
+  devise_for :admins,controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
   }
 
   devise_for :customers,skip: :registrations,controllers: {
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :customers do
-    resources :customers, only: [:show, :edit, :update]
+    resource :customers, only: [:show, :edit, :update]
     patch 'customers/destroy' => 'customers#destroy'
     get 'customers/destroy' => 'customers#confirm'
   end
@@ -48,6 +48,5 @@ Rails.application.routes.draw do
       end
     end
   end
-
 
 end

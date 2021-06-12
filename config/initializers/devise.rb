@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '4ad1b093b1b21fb77bac0034f905020e451702ad3c5472d58a5564910db03a8b51622fc9446fce3bcf730186e724b5605f14ecd2b5101a01a3c16cee2525469d'
+  # config.secret_key = '7e5c4cf893fb8f86bdf3d08fd5befe7bae2724b15868ae3f5e12513f91719ace03128b1147ad0699e9ca050789eaabf1a7e1253fc4609d18bc8c93bc66846e1b'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '14bbb2cf91b38188d85bcda6b38da5723e18f156ea6d77b377630035065b959ad0ce68e3ed594fc1d2473873ed2baf8b749f695f4974fe73d03c4470b6f41cd9'
+  # config.pepper = 'bae9f5a5de94a40f8ab5571989ab4be533de06372cd84ce315fb488cf1f842863fd196d81bf2e8b772572677ae77c2988904c306378ddd57f16991e2221f5c46'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -244,7 +244,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-   config.scoped_views = true
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
@@ -252,7 +252,7 @@ Devise.setup do |config|
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
-   config.sign_out_all_scopes = false
+  # config.sign_out_all_scopes = true
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like

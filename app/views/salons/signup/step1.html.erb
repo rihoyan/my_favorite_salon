@@ -16,13 +16,23 @@
       </div>
 
       <div class="form_group row mt-3">
-        <%= f.label :address, "住所", class: "col-lg-4" %>
-        <%= f.collection_select(:prefecture_id, @pref, :id, :name, {prompt: "県を選択してください"}) %>
+        <%= f.label :prefecture_id, "住所(県)", class: "col-lg-4" %>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "県を選択してください"},id: "pref-form") %>
       </div>
 
       <div class="form_group row mt-3">
-        <%= f.label :phone_number,"電話番号", class: "col-lg-4" %>
-        <%= f.text_field :phone_number, autocomplete: "phone_number", class: "col-lg-4 form-control" %>
+        <%= f.label :municipality_id, "住所(市区町村)", class: "col-lg-4" %>
+        <%= f.collection_select(:municipality_id, Municipality.all, :id, :city_name, {prompt: "市区町村を選択してください"},id: "city-form") %>
+      </div>
+
+      <div class="form_group row mt-3">
+        <%= f.label :address, "住所(それ以降)", class: "col-lg-4" %>
+        <%= f.text_field :address, autocomplete: "address", class: "col-lg-4 form-control" %>
+      </div>
+
+      <div class="form_group row mt-3">
+        <%= f.label :telephone_number,"電話番号", class: "col-lg-4" %>
+        <%= f.text_field :telephone_number, autocomplete: "phone_number", class: "col-lg-4 form-control" %>
       </div>
 
       <div class="form_group row mt-3">
