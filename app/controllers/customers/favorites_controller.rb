@@ -1,4 +1,4 @@
-class Customers::FavoritesController < ApplicationController
+class Customers::FavoritesController < Customers::ApplicationController
 
   def create
     @salon = Salon.find(params[:salon_id])

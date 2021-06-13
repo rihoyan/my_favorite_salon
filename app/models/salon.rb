@@ -6,6 +6,7 @@ class Salon < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :menu_salons, dependent: :destroy
   has_many :menus
+  has_many :reservations, dependent: :destroy
   belongs_to :prefecture
   belongs_to :municipality
   attachment :salon_image

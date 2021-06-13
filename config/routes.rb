@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     passwords: 'salons/passwords',
   }
 
-  devise_for :admins,controllers: {
+  devise_for :admins,skip: :registrations,controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
     registrations: 'admins/registrations'
@@ -33,6 +33,15 @@ Rails.application.routes.draw do
     resources :salons, only: [:index, :show] do
     resource :favorites, only: [:create, :destroy]
   end
+    resources :reservations do
+      collection do
+        get 'step1'
+        get 'step2'
+        get 'step3'
+        get 'confirm'
+        get 'done'
+      end
+    end
 end
 
   scope module: :salons do

@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col-12 text-center">
+      <h3><span>01</span>どの美容院を予約しますか？</h3>
+    </div>
+
+    <%= form_with model: @rsv, url: step2_reservations_path,method: :get, local: true do |f| %>
+      <%= f.collection_select(:salon_id, @favorites, :salon_id, :salon_id) %>
+      <%= f.submit "次へ進む", class: "form-control btn btn-outline-dark" %>
+    <% end %>
+
+    <div class="col-12 mt-3">
+      <% @favorites.each do |fav| %>
+        <div class="card", style="width: 20rem;">
+          <%= attachment_image_tag fav.salon, :salon_image ,size:"300x200",fallback: "logo.png",class: "card-image-top" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= fav.salon.name %></h5>
+            <p class="card-text">
+              <%= fav.salon.prefecture.name %><%= fav.salon.municipality.city_name %><%= fav.salon.address %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

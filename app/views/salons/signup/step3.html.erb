@@ -8,7 +8,7 @@
 
       <div class="form_group row mt-3">
         <%= f.label :name, "メニュー名", class: "col-lg-4" %>
-        <%= f.collection_check_boxes:menu_ids, Menu.all, :id, :name, include_hidden: false %>
+        <%= f.collection_check_boxes :menu_ids, Menu.all, :id, :name, include_hidden: false %>
       </div>
 
     <div class="actions mt-3">
