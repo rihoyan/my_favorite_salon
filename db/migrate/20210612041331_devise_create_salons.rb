@@ -31,14 +31,14 @@ class DeviseCreateSalons < ActiveRecord::Migration[5.2]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-      
+
       t.integer :prefectures_id,    null: false
       t.integer :municipality_id,   null: false
       t.string :name,               null: false
       t.string :name_kana,          null: false
       t.string :address,            null: false
       t.string :phone_number,       null: false
-      t.integer :salon_image_id,    null: false
+      t.string :salon_image_id
       t.time :start_time,           null: false
       t.time :end_time,             null: false
       t.integer :seats,             null: false

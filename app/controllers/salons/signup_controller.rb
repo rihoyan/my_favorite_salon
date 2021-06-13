@@ -2,8 +2,6 @@ class Salons::SignupController < ApplicationController
 
   def step1
     @salon = Salon.new
-    #@pref = Prefecture.all
-    #@city = Municipality.all
   end
 
   def step2
@@ -26,7 +24,6 @@ class Salons::SignupController < ApplicationController
     session[:end_time] = params[:salon][:end_time]
     session[:seats] = params[:salon][:seats]
     session[:stylists] = params[:salon][:stylists]
-    session[:salon_image_id] = params[:salon][:salon_image_id]
     session[:introduction] = params[:salon][:introduction]
   end
 
@@ -34,8 +31,8 @@ class Salons::SignupController < ApplicationController
     @pref = Prefecture.find(session[:prefecture_id])
     @city = Municipality.find(session[:municipality_id])
     session[:menu_ids] = params[:menu_ids]
-    if session[:salon_image_id].present?
-      @image_filename = session[:salon_image_id]
+    if session[:salon_image].present?
+      @image_filename = session[:salon_image]
     end
   end
 
@@ -55,10 +52,8 @@ class Salons::SignupController < ApplicationController
       end_time: session[:end_time],
       seats: session[:seats],
       stylists: session[:stylists],
-      salon_image_id: session[:salon_image_id],
       introduction: session[:introduction]
       )
-      #binding.pry
 
       if @salon.save!
         session[:menu_ids].each do |menu|
@@ -67,11 +62,14 @@ class Salons::SignupController < ApplicationController
         end
         session[:id] = @salon.id
         sign_in Salon.find(session[:id])
-        redirect_to salons_index_path
-
+        redirect_to done_salons_signup_index_path
       else
         render 'step1', danger: "会員登録に失敗しました。もう一度初めからやり直してください"
       end
+  end
+
+  def done
+      sign_in Salon.find(session[:id]) unless salon_signed_in?
   end
 
   private
@@ -92,7 +90,6 @@ class Salons::SignupController < ApplicationController
       :end_time,
       :seats,
       :stylists,
-      :salon_image,
       :introduction)
     params.require(:menu).permit(menu_ids: [])
   end

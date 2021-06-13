@@ -7,7 +7,6 @@ class Customers::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
    def new
      super
-    flash[:success] = "ログインしました！"
    end
 
   # POST /resource/sign_in
@@ -21,7 +20,7 @@ class Customers::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    customer_path(resource)
+    customers_path(resource)
   end
 
   def guest_sign_in

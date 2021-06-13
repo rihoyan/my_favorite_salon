@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_12_051928) do
+ActiveRecord::Schema.define(version: 2021_06_13_134928) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 2021_06_12_051928) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "salon_id"
-    t.integer "customer_id"
+    t.integer "salon_id", null: false
+    t.integer "customer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_favorites_on_customer_id"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2021_06_12_051928) do
     t.integer "menu_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "time"
+    t.integer "price"
     t.index ["menu_id"], name: "index_menu_salons_on_menu_id"
     t.index ["salon_id"], name: "index_menu_salons_on_salon_id"
   end
@@ -65,7 +67,6 @@ ActiveRecord::Schema.define(version: 2021_06_12_051928) do
   create_table "menus", force: :cascade do |t|
     t.string "name"
     t.integer "time"
-    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,10 +79,39 @@ ActiveRecord::Schema.define(version: 2021_06_12_051928) do
     t.index ["prefecture_id"], name: "index_municipalities_on_prefecture_id"
   end
 
+  create_table "order_details", force: :cascade do |t|
+    t.integer "reservation_id", null: false
+    t.integer "menu_id", null: false
+    t.string "styling_image_id"
+    t.text "comment"
+    t.integer "stylist_name"
+    t.integer "favorite_rank"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_id"], name: "index_order_details_on_menu_id"
+    t.index ["reservation_id"], name: "index_order_details_on_reservation_id"
+  end
+
   create_table "prefectures", force: :cascade do |t|
     t.string "name", limit: 4, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "salon_id", null: false
+    t.date "date", null: false
+    t.time "start_time", null: false
+    t.time "end_time"
+    t.string "ref_image_id"
+    t.text "ref_comment"
+    t.string "telephone_number", null: false
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_reservations_on_customer_id"
+    t.index ["salon_id"], name: "index_reservations_on_salon_id"
   end
 
   create_table "salons", force: :cascade do |t|
@@ -96,7 +126,7 @@ ActiveRecord::Schema.define(version: 2021_06_12_051928) do
     t.string "name_kana", null: false
     t.string "address", null: false
     t.string "telephone_number", null: false
-    t.integer "salon_image_id", null: false
+    t.string "salon_image_id"
     t.time "start_time", null: false
     t.time "end_time", null: false
     t.integer "seats", null: false

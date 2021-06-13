@@ -1,4 +1,5 @@
 class Favorite < ApplicationRecord
-  belongs_to :salon, foreign_key: true, null: false
-  belongs_to :customer, foreign_key: true, null: false
+  belongs_to :salon
+  belongs_to :customer
+  validates :customer_id, uniqueness: { scope: :salon_id }
 end

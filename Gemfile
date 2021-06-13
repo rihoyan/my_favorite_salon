@@ -70,3 +70,4 @@ gem "refile-mini_magick"
 
 gem "pry-byebug"
 gem "jquery-rails"
+gem 'ransack'

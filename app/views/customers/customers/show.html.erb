@@ -2,11 +2,11 @@
   <div class="row mt-3">
     <div class="col-lg-5">
       <%= @customer.nickname %></br>
-      <%= attachment_image_tag @customer, :profile_image, :fill,200,200, fallback: "woman.png", size: '200x200', class: "border border-secondary rounded-circle" %>
+      <%= attachment_image_tag @customer, :profile_image, size:"300x200", fallback: "woman.png", class: "border border-secondary rounded-circle" %>
     </div>
     <div class="col-lg-7">
       <div class="">
-        <p>My 美容院</p>
+        <p><%= link_to "My 美容院", favorites_index_path %></p>
       </div>
       <div class="">
         <p>スタイリング履歴</p>

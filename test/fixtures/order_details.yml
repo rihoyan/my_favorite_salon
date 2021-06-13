@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reservation_id: one
+  menu_id: one
+  styling_image_id: MyString
+  comment: MyText
+  stylist_name: 1
+  favorite_rank: 1
+
+two:
+  reservation_id: two
+  menu_id: two
+  styling_image_id: MyString
+  comment: MyText
+  stylist_name: 1
+  favorite_rank: 1

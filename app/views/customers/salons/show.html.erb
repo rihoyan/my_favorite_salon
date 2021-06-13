@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row my-4">
+    <%= attachment_image_tag @salon, :salon_image ,size:"600x200",fallback: "logo.png" %>
+  </div>
+
+  <% if @salon.favorited_by?(current_customer) %>
+    <%= link_to "登録解除", salon_favorites_path(@salon),method: :delete %>
+  <% else %>
+    <%= link_to "お気に入り登録", salon_favorites_path(@salon),method: :post %>
+  <% end %>
+  <table class="table">
+    <tr>
+      <th>サロン名</th>
+      <td><%= @salon.name %></td>
+      <th>場所</th>
+      <td><%= @pref.name %><%= @city.city_name %><%= @salon.address %>
+    </tr>
+    <tr>
+      <th>営業時間</th>
+      <td><%= simple_time(@salon.start_time) %>〜<%= simple_time(@salon.end_time) %></td>
+      <th>スタイリスト数</th>
+      <td><%= @salon.stylists %>人</td>
+      <th>席数</th>
+      <td><%= @salon.seats %>席</td>
+    </tr>
+  </table>
+  <table class="table my-4">
+    <tr>
+      <th>メニュー</th>
+      <th>平均時間</th>
+      <th>料金(税込)</th>
+      <% @salon.menu_salons.each do |i| %>
+    <tr>
+      <td><%= i.menu.name %></td>
+      <td><%= i.time %></td>
+      <td><%= i.price %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td><%= @salon.introduction %></td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,38 @@
+<div class="container">
+
+  <div class="row my-4">
+    <h3 class="col-auto title">美容院を探す</h3>
+    <%= search_form_for @q, url: salons_path,local: true do |f| %>
+      <%= f.search_field :name_cont, placeholder: "サロン名から探す",class: "form-control" %>
+      <%= f.submit "検索",class: "btn btn-outline-dark" %>
+    <% end %>
+  </div>
+
+  <div class="row my-4">
+    <h4>エリアから探す</h4>
+      <%= search_form_for @q, url: salons_path,local: true do |f| %>
+    <p>都道府県を選択</p>
+      <%= f.collection_select(:prefecture_id_eq, Prefecture.all, :id, :name ,{prompt: "県を選択してください"},class: "pref form-control") %>
+      <%= f.submit "検索",class: "btn btn-outline-dark" %>
+    <% end %>
+  </div>
+
+  <h4>検索結果<%= @results.count %>件</h4>
+
+  <% @results.each do |salon| %>
+    <div class="card", style="width: 30rem;">
+      <%= attachment_image_tag salon, :salon_image ,size:"100x100",fallback: "logo.png",class: "card-image-top" %>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to salon.name,salon_path(salon) %></h5>
+        <p class="card-text">
+          <%= salon.prefecture.name %><%= salon.municipality.city_name %><%= salon.address %></br>
+          <P>営業時間</P><%= simple_time(salon.start_time) %>〜<%= simple_time(salon.end_time) %>
+          <% salon.menu_salons.each do |i| %>
+            <ul>
+             <li><%= i.menu.name %></li>
+            </ul>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  <% end %>

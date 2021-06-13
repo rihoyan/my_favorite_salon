@@ -9,4 +9,8 @@ class Salon < ApplicationRecord
   belongs_to :prefecture
   belongs_to :municipality
   attachment :salon_image
+
+  def favorited_by?(customer)
+    favorites.where(customer_id: customer.id).exists?
+  end
 end

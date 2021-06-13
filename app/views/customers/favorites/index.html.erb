@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row mt-3">
+    <h3>お気に入りサロン</h3>
+  </div>
+
+  <div class="row">
+    <% @favorites.each do |fav| %>
+    <div class="card", style="width: 20rem;">
+      <%= attachment_image_tag fav.salon, :salon_image ,size:"300x200",fallback: "logo.png",class: "card-image-top" %>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to fav.salon.name,salon_path(fav.salon_id) %></h5>
+        <p class="card-text">
+          <%= fav.salon.prefecture.name %><%= fav.salon.municipality.city_name %><%= fav.salon.address %>
+        </p>
+    <% end %>
+        <%= link_to "予約する", "",class: "btn btn-outline-dark" %>
+    </div>
+  </div>
