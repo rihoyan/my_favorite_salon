@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center my-4">
+      <h3><span>04</span>お客様情報を入力</h3>
+      <p>基本情報の変更はマイページからお願い致します。</p>
+
+      <%= form_with model: @reservation,url: confirm_reservations_path,method: :get, local: true do |f| %>
+      <div class="form_group row mt-3">
+        <label class="col-lg-4">氏名</label>
+        <p class="col-lg-7"><%= @customer.last_name %><%= @customer.first_name %></p>
+      </div>
+      <div class="form_group row mt-3">
+        <%= f.label :telephone_number, "電話番号", class: "col-lg-4" %>
+        <%= f.text_field :telephone_number, autocomplete: "telephone_number",placeholder: "ハイフンなし",class: "col-lg-4 form-control" %>
+      </div>
+      <%= f.submit "確認画面へ", class: "btn btn-outline-dark" %>
+      <% end %>
+    </div>
+  </div>
+</div>

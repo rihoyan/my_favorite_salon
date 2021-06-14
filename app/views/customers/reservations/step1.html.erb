@@ -5,22 +5,22 @@
     </div>
 
     <%= form_with model: @rsv, url: step2_reservations_path,method: :get, local: true do |f| %>
-      <%= f.collection_select(:salon_id, @favorites, :salon_id, :salon_id) %>
-      <%= f.submit "次へ進む", class: "form-control btn btn-outline-dark" %>
-    <% end %>
-
-    <div class="col-12 mt-3">
-      <% @favorites.each do |fav| %>
-        <div class="card", style="width: 20rem;">
-          <%= attachment_image_tag fav.salon, :salon_image ,size:"300x200",fallback: "logo.png",class: "card-image-top" %>
-          <div class="card-body">
-            <h5 class="card-title"><%= fav.salon.name %></h5>
-            <p class="card-text">
-              <%= fav.salon.prefecture.name %><%= fav.salon.municipality.city_name %><%= fav.salon.address %>
-            </p>
+      <%= button_tag type: :submit,class: "btn" do %>
+      <div class="col-12 mt-3">
+        <% @favorites.each do |fav| %>
+          <div class="card", style="width: 20rem;">
+            <%= attachment_image_tag fav.salon, :salon_image ,size:"300x200",fallback: "logo.png",class: "card-image-top" %>
+            <div class="card-body">
+              <h5 class="card-title"><%= fav.salon.name %></h5>
+              <p class="card-text">
+                <%= fav.salon.prefecture.name %><%= fav.salon.municipality.city_name %><%= fav.salon.address %>
+                <%= f.hidden_field :salon_id, value: fav.salon_id %>
+              </p>
+            </div>
           </div>
-        </div>
+        <% end %>
+      </div>
       <% end %>
-    </div>
+    <% end %>
   </div>
 </div>

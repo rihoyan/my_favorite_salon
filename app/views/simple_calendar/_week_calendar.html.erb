@@ -36,8 +36,15 @@
         <% times.each do |time| %>
           <tr>
             <td><%= time %></td>
-            <% week.each do |day| %>
+            <% week.each do |date| %>
               <td>
+                <% if check_reservation(@reservations, date, time) %>
+                  <%= '×' %>
+                <% else %>
+                  <%= link_to step3_reservations_path(date: @day, time: @time) do %>
+                    <%= '○' %>
+                  <% end %>
+                <% end %>
               </td>
             <% end %>
           </tr>
