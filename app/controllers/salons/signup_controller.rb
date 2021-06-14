@@ -17,7 +17,7 @@ class Salons::SignupController < ApplicationController
     session[:password_confirmation] = params[:salon][:password_confirmation]
   end
 
-  def step3
+  def confirm
     @salon = Salon.new
     session[:staff_name] = params[:salon][:staff_name]
     session[:start_time] = params[:salon][:start_time]
@@ -25,15 +25,8 @@ class Salons::SignupController < ApplicationController
     session[:seats] = params[:salon][:seats]
     session[:stylists] = params[:salon][:stylists]
     session[:introduction] = params[:salon][:introduction]
-  end
-
-  def confirm
     @pref = Prefecture.find(session[:prefecture_id])
     @city = Municipality.find(session[:municipality_id])
-    session[:menu_ids] = params[:menu_ids]
-    if session[:salon_image].present?
-      @image_filename = session[:salon_image]
-    end
   end
 
   def create
@@ -56,10 +49,6 @@ class Salons::SignupController < ApplicationController
       )
 
       if @salon.save!
-        session[:menu_ids].each do |menu|
-          menu_salon = MenuSalon.new(menu_id: menu, salon_id: @salon.id)
-          menu_salon.save!
-        end
         session[:id] = @salon.id
         sign_in Salon.find(session[:id])
         redirect_to done_salons_signup_index_path
@@ -91,6 +80,5 @@ class Salons::SignupController < ApplicationController
       :seats,
       :stylists,
       :introduction)
-    params.require(:menu).permit(menu_ids: [])
   end
 end

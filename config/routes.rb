@@ -56,7 +56,6 @@ end
       collection do
         get 'step1'
         get 'step2'
-        get 'step3'
         get 'confirm'
         get 'done'
       end

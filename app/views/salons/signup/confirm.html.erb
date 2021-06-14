@@ -51,12 +51,6 @@
         <th>店舗説明</th>
         <td><%= session[:introduction] %></td>
       </tr>
-      <tr>
-        <th>メニュー</th>
-        <% Menu.find(session[:menu_ids]).each do |menu| %>
-          <td><%= menu.name %></td>
-        <% end %>
-      </tr>
     </table>
   <%= f.submit "登録", class: "form-control w-25 btn btn-outline-dark" %>
   <% end %>
