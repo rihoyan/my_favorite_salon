@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="new_menu">
+    <h3 class="title my-4">|メニュー登録</h3>
+    <%= form_with model: @menu,url: salons_menus_path, local: true do |f| %>
+
+      <div class="form_group row mt-3">
+        <%= f.label :name, "メニュー名", class: "col-lg-2" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name",class: "col-lg-4 form-control" %>
+      </div>
+
+      <div class="form_group row mt-3">
+        <%= f.label :time, "平均施術時間", class: "col-lg-2" %>
+        <%= f.number_field :time, autocomplete: "time",class: "col-lg-4 form-control" %>分
+      </div>
+
+      <div class="form_group row mt-3">
+        <%= f.label :price, "料金(税込)", class: "col-lg-2" %>
+        <%= f.number_field :price, autocomplete: "price",class: "col-lg-4 form-control" %>円
+      </div>
+      <%= f.submit "登録", class: "btn btn-outline-dark" %>
+    <% end %>
+  </div>
+
+  <div class="menu_list">
+    <h3 class="title my-4">|メニューリスト</h3>
+
+      <table vlass="table">
+        <tr>
+          <th>メニュー名</th>
+          <th>時間</th>
+          <th>料金(税込)</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <% @menus.each do |menu| %>
+          <tr>
+            <td><%= menu.name %></td>
+            <td><%= menu.time %>分</td>
+            <td><%= menu.price.to_s(:delimited) %>円</td>
+            <td><%= link_to "編集", edit_salons_menu_path(menu), class: "btn btn-outline-dark" %></td>
+            <td><%= link_to "削除", salons_menu_path(menu),method: :delete, class: "btn btn-outline-dark" %></td>
+          </tr>
+        <% end %>
+      </table>
+  </div>
+</div>

@@ -1,5 +1,4 @@
-class ApplicationController < ActionController::Base
+class Salons::ApplicationController < ApplicationController
     layout 'salons/application'
     add_flash_types :success, :info, :warning, :danger
-    before_action :authenticate_salon!
 end

@@ -20,8 +20,8 @@
           <ul class="nav navber-nav ml-auto">
             <li class="nav-item"><%= link_to "各種登録", "", class: "nav-link text-dark" %></li>
             <li class="nav-item"><%= link_to "基本情報変更", "",class: "nav-link text-dark" %></li>
-            <li class="nav-item"><%= link_to "予約状況",salons_index_path, class: "nav-link text-dark" %></li>
-            <li class="nav-item"><%= link_to "ログアウト", "",method: :delete, class: "nav-link text-dark" %></li>
+            <li class="nav-item"><%= link_to "予約状況","", class: "nav-link text-dark" %></li>
+            <li class="nav-item"><%= link_to "ログアウト", destroy_salon_session_path,method: :delete, class: "nav-link text-dark" %></li>
           </ul>
 
           <% else %>
@@ -33,7 +33,7 @@
         </div>
       </div>
     </nav>
-      <%= yield %>
       <%= render 'layouts/flash' %>
+      <%= yield %>
   </body>
 </html>

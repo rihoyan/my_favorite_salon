@@ -2,7 +2,30 @@
   <div class="row my-4">
     <div class="col-12 text-center">
       <h3><span>03</span>メニューを選んでください</h3>
+      <p>施術時間は目安です。髪の長さにより前後します。</p>
+
+        <%= form_with model: @rsv, url: step4_reservations_path,method: :get, local:true do |f| %>
+          <table class="table" >
+            <tr>
+              <th>選択</th>
+              <th>メニュー名</th>
+              <th>施術時間(目安)</th>
+              <th>料金(税込)</th>
+            </tr>
+            <% @menus.each do |menu| %>
+              <tr>
+                <% f.hidden_field :menu_id, value: menu.id %>
+                <td><%= f.radio_button(:menu_id, menu.id) %></td>
+                <td><%= menu.name %></td>
+                <td><%= menu.time %>分</td>
+                <td><%= menu.price.to_s(:delimited) %>円〜</td>
+              </tr>
+              <% end %>
+          </table>
+          <%= f.submit "次へ進む", class: "btn btn-outline-dark" %>
+        <% end %>
+
     </div>
-    <%= link_to "次へ進む", step4_reservations_path %>
+
   </div>
 </div>

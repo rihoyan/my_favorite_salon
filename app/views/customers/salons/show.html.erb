@@ -4,9 +4,9 @@
   </div>
 
   <% if @salon.favorited_by?(current_customer) %>
-    <%= link_to "登録解除", salon_favorites_path(@salon),method: :delete %>
+    <%= link_to "登録解除", customers_salon_favorites_path(@salon),method: :delete %>
   <% else %>
-    <%= link_to "お気に入り登録", salon_favorites_path(@salon),method: :post %>
+    <%= link_to "お気に入り登録", customers_salon_favorites_path(@salon),method: :post %>
   <% end %>
   <table class="table">
     <tr>
@@ -29,11 +29,11 @@
       <th>メニュー</th>
       <th>平均時間</th>
       <th>料金(税込)</th>
-      <% @salon.menu_salons.each do |i| %>
+      <% @salon.menus.each do |menu| %>
     <tr>
-      <td><%= i.menu.name %></td>
-      <td><%= i.time %></td>
-      <td><%= i.price %></td>
+      <td><%= menu.name %></td>
+      <td><%= menu.time %></td>
+      <td><%= menu.price %></td>
       <% end %>
     </tr>
     <tr>

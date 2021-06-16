@@ -1,4 +1,4 @@
-class Salons::SalonsController < ApplicationController
+class Salons::SalonsController < Salons::ApplicationController
   def index
     @salons = Salon.all
   end

@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row my-4">
+    <% @images.each do |image| %>
+      <div class="col-12">
+        <%= attachment_image_tag(image, :image, :fill, 200, 200, fallback: "logo.png") %>
+          <div id="icon-btn-<%= image.id %>">
+           <%= render 'customers/likes/like', image: image %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>

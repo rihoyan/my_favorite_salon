@@ -1,0 +1,2 @@
+module Salons::MenusHelper
+end

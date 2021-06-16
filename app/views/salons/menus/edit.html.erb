@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="new_menu">
+    <h3 class="title my-4">|メニュー編集</h3>
+    <%= form_with model: @menu,url: salons_menu_path, local: true do |f| %>
+
+      <div class="form_group row mt-3">
+        <%= f.label :name, "メニュー名", class: "col-lg-2" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name",class: "col-lg-4 form-control" %>
+      </div>
+
+      <div class="form_group row mt-3">
+        <%= f.label :time, "平均施術時間", class: "col-lg-2" %>
+        <%= f.number_field :time, autocomplete: "time",class: "col-lg-4 form-control" %>分
+      </div>
+
+      <div class="form_group row mt-3">
+        <%= f.label :price, "料金(税込)", class: "col-lg-2" %>
+        <%= f.number_field :price, autocomplete: "price",class: "col-lg-4 form-control" %>円
+      </div>
+      <%= f.submit "登録", class: "btn btn-outline-dark" %>
+      <% end %>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+module Customers::ImagesHelper
+end

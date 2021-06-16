@@ -49,16 +49,11 @@ class Salons::SignupController < ApplicationController
       )
 
       if @salon.save!
-        session[:id] = @salon.id
-        sign_in Salon.find(session[:id])
-        redirect_to done_salons_signup_index_path
+        sign_in Salon.find(@salon.id)
+        redirect_to new_salons_menus_path(current_salon), success: "登録が完了しました。まずはメニューと美容院のイメージ画像を登録してください"
       else
         render 'step1', danger: "会員登録に失敗しました。もう一度初めからやり直してください"
       end
-  end
-
-  def done
-      sign_in Salon.find(session[:id]) unless salon_signed_in?
   end
 
   private

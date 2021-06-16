@@ -16,9 +16,17 @@ class Salons::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  def after_sign_in_path_for(resource)
+    new_salons_menu_path(current_salon)
+  end
+
+  def after_sign_out_path_for(resource)
+    new_salon_session_path
+  end
+
   protected
 
   def configure_sign_in_params
-　   devise_parameter_sanitizer.permit(:sign_in, keys: [:phone_number])
+　   devise_parameter_sanitizer.permit(:sign_in, keys: [:telephone_number])
   end
 end

@@ -30,9 +30,6 @@ Rails.application.routes.draw do
     patch 'customers/destroy' => 'customers#destroy'
     get 'customers/destroy' => 'customers#confirm'
     get 'favorites/index' => 'favorites#index'
-    resources :salons, only: [:index, :show] do
-    resource :favorites, only: [:create, :destroy]
-  end
     resources :reservations ,only: [:index, :show,:create] do
       collection do
         get 'step1'
@@ -45,10 +42,15 @@ Rails.application.routes.draw do
     end
 end
 
-  scope module: :salons do
-    get 'salons/index'
-    get 'salons/show'
-    get 'salons/edit'
+  namespace :customers do
+    resources :salons, only: [:index, :show] do
+      resource :favorites, only: [:create, :destroy]
+    end
+    resources :images , only: [:index] do
+      post 'add' => 'likes#create'
+      delete '/add' => 'likes#destroy'
+    end
+    resources :likes , only: [:index]
   end
 
   namespace :salons do
@@ -60,5 +62,7 @@ end
         get 'done'
       end
     end
+    resources :menus, except: [:show]
+    resources :images, except: [:show, :edit, :update,:new]
   end
 end
