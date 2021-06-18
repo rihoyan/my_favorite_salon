@@ -1,0 +1,2 @@
+module Salons::OrderDetailsHelper
+end

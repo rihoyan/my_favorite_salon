@@ -3,28 +3,28 @@
     <div class="col-12 text-center my-4">
       <h3><span>05</span>確認画面</h3>
 
-      <%= form_with model: @reservation,url: reservations_path, local: true do |f| %>
+      <%= form_with model: @reservation, url: reservations_path, local: true do |f| %>
       <table vlass:"table">
         <tr>
           <th>予約店舗</th>
-          <td></td>
+          <td><%= @salon.name %></td>
         </tr>
         <tr>
           <th>予約日時</th>
-          <td></td>
-          <td>※おおよその施術時間は、分です。髪の長さで変わります</td>
+          <td><%= session[:start_time] %></td>
+          <td>※おおよその施術時間は、<%= @menu.time %>分です。髪の長さで変わります</td>
         </tr>
         <tr>
           <th>メニュー</th>
-          <td></td>
+          <td><%= @menu.name %></td>
         </tr>
         <tr>
           <th>お客様氏名</th>
-          <td></td>
+          <td><%= current_customer.last_name %><%= current_customer.first_name %></td>
         </tr>
         <tr>
           <th>電話番号</th>
-          <td></td>
+          <td><%= session[:telephone_number] %></td>
         </tr>
       </table>
       <%= f.submit "予約確定", class: "btn btn-outline-dark" %>

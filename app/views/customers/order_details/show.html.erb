@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row my-4">
+      <table class="table col">
+        <tr>
+          <th>本日の仕上がり</th>
+          <td><%= attachment_image_tag @order_detail,:styling_image, size: "200x200",fallback: "logo.png" %></td>
+        </tr>
+      </tabl>
+      <table class="table col">
+        <tr>
+          <th>日時</th>
+          <td><%= @order_detail.day.strftime('%Y/%m/%d') %> <%= @order_detail.start_time.strftime('%H:%M')%>〜</td>
+        </tr>
+        <tr>
+          <th>店舗</th>
+          <td><%= link_to @order_detail.salon.name, customers_salon_path(@order_detail.salon_id) %></td>
+        </tr>
+        <tr>
+          <th>メニュー</th>
+          <td><%= @order_detail.menu.name %></td>
+        </tr>
+        <tr>
+          <th>担当美容師</th>
+          <td><%= @order_detail.stylist_name %></td>
+        </tr>
+        <tr>
+          <th>コメント</th>
+          <td><%= @order_detail.comment %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

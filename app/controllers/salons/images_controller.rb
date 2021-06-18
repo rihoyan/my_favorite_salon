@@ -1,4 +1,5 @@
 class Salons::ImagesController < Salons::ApplicationController
+  before_action :authenticate_salon!
 
   def index
     @image = Image.new

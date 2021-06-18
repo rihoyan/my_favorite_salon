@@ -1,18 +1,31 @@
 <div class="container">
   <div class="row mt-4">
-    <h5>美容室情報</h5>
+      <h3 class="text-center"><span>02</span>希望日を選んでください</h3>
   </div>
     <div class="row">
-    <p><%= @salon.name %></p>
+        <%= form_with model: @rsv, url: step3_reservations_path,method: :get, local: true do |f| %>
+          <div class="form_group row">
+            <%= f.label :day, "予約希望日", class: "control-label" %><br />
+            <%= f.date_field :day, class: "form-control" %>
+          </div>
+          <div class="form_group row mt-3">
+            <%= f.label :start_time,"希望時間", class: "control-label" %>
+            <%= f.time_field :start_time, class: "form-control" %>
+          </div>
+        <%= f.submit "メニュー選択へ",class: "mt-2 form-control btn-btn-outline-dark" %>
 
-      <div class="col-12 text-center">
-        <h3><span>02</span>希望日時を選んでください</h3>
-        <p>3ヶ月先まで予約することができます。</p>
-      </div>
-      <div class="col-12 mt-3">
-        <%= week_calendar events: @reservations do |date, reservations| %>
-          <%= date.day %>
-        <% end %>
-      </div>
+      <% end %>
     </div>
-</div>
+
+    <div class="row mt-3">
+      <%= month_calendar events: @reservations do |date, reservations| %>
+        <%= date %>
+          <% reservations.each do |reservation| %>
+          <div>
+            <%= reservation.start_time.hour %>:<%= reservation.start_time.min %>
+          </div>
+          <% end %>
+    </div>
+      <% end %>
+    </div>
+  </div>

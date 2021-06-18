@@ -13,18 +13,18 @@
     <nav class="navber navber-expand-lg navber-light fixed-top" style="background-color: #e3f2fd;">
       <div class="container">
         <div class="nav navber-nav p-3">
-          <%= link_to image_tag("logo.png",class: "navber-brand"), root_path %>
 
           <% if salon_signed_in? %>
-
+          <%= link_to image_tag("logo.png",class: "navber-brand"), root_path %>
           <ul class="nav navber-nav ml-auto">
             <li class="nav-item"><%= link_to "各種登録", "", class: "nav-link text-dark" %></li>
             <li class="nav-item"><%= link_to "基本情報変更", "",class: "nav-link text-dark" %></li>
-            <li class="nav-item"><%= link_to "予約状況","", class: "nav-link text-dark" %></li>
+            <li class="nav-item"><%= link_to "予約状況",salons_reservations_path, class: "nav-link text-dark" %></li>
             <li class="nav-item"><%= link_to "ログアウト", destroy_salon_session_path,method: :delete, class: "nav-link text-dark" %></li>
           </ul>
 
           <% else %>
+          <%= link_to image_tag("logo.png",class: "navber-brand"), root_path %>
           <ul class="nav navber-nav ml-auto">
             <li class="nav-item"><%= link_to "ログイン", new_salon_session_path, class: "nav-link text-dark" %></li>
             <li class="nav-item"><%= link_to "新規登録", step1_salons_signup_index_path, class: "btn btn-outline-dark" %></li>

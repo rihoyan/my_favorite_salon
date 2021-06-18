@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col-12 text-center">
+      <h3><span>03</span>予約が完了しました</h3>
+      <p>キャンセルする際は、電話連絡してください</p>
+
+
+    <div class="row">
+      <p>当日参考にして欲しい画像やご要望があれば、下記より送信をお願いいたします(任意)</p>
+    </div>
+     <%= form_with model: @reservation, url: reservation_path(@reservation), local: true do |f| %>
+      <div class="form_group row mt-3">
+        <%= f.label :ref_image, "参考画像", class: "form-label" %>
+        <%= f.attachment_field :ref_image %> ※送信できる画像は1枚のみです
+      </div>
+      <div class="form_group row mt-3">
+        <%= f.label :ref_comment, "コメント", class: "form-label" %>
+        <%= f.text_area :ref_comment, placeholder: "髪に関するご相談など、どんなことでもお気軽に入力ください", class: "form-control",size: "30x8" %>
+      </div>
+      <%= f.submit "送信", class: "btn btn-outline-dark" %>
+    <% end %>
+    <%= link_to "スキップ", reservation_path(@reservation), class: "btn btn-dark" %>
+    </div>
+  </div>
+</div>

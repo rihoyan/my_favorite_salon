@@ -1,4 +1,5 @@
 class Customers::FavoritesController < Customers::ApplicationController
+  before_action :authenticate_customer!
 
   def create
     @salon = Salon.find(params[:salon_id])

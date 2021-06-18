@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row my-4">
+      <table class="table col">
+        <tr>
+          <th>参考画像</th>
+          <td><%= attachment_image_tag @reservation,:ref_image, size: "200x200",fallback: "logo.png" %></td>
+        </tr>
+      </tabl>
+      <table class="table col">
+        <tr>
+          <th>日時</th>
+          <td><%= @reservation.day.strftime('%Y/%m/%d') %> <%= @reservation.start_time.strftime('%H:%M')%>〜</td>
+        </tr>
+        <tr>
+          <th>店舗</th>
+          <td><%= link_to @reservation.salon.name, customers_salon_path(@reservation.salon_id) %></td>
+        </tr>
+        <tr>
+          <th>メニュー</th>
+          <td><%= @reservation.menu.name %></td>
+        </tr>
+        <tr>
+          <th>参考コメント</th>
+          <td><%= @reservation.ref_comment %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

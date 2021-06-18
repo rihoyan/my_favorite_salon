@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col-12">
+      <h3>| 予約中</h3>
+
+      <table class="table">
+        <tr>
+          <th style="width: 30%">日にち</th>
+          <th style="width: 40%">店舗</th>
+          <th style="width: 20%">メニュー</th>
+          <th style="width: 10%"></th>
+        </tr>
+        
+        <% if @reservations.present? %>
+          <% @reservations.each do |reserv| %>
+          <tr>
+            <td><%= link_to reservation_path(reserv),class: "text-dark" do %>
+              <%= reserv.day.strftime('%Y/%m/%d') %>
+              <% end %>
+            </td>
+            <td><%= link_to reserv.salon.name, customers_salon_path(reserv.salon_id),class: "text-dark" %></td>
+            <td><%= reserv.menu.name %></td>
+            <td></td>
+            <% end %>
+        <% else %>
+            <td>予約はありません</td>
+        <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+    <div class="row my-4">
+    <div class="col-12">
+      <h3>| スタイリング履歴</h3>
+
+      <table class="table">
+        <tr>
+          <th style="width: 30%">日にち</th>
+          <th style="width: 40%">店舗</th>
+          <th style="width: 20%">メニュー</th>
+          <th style="width: 10%"></th>
+        </tr>
+        <% if @order_details.present? %>
+          <% @order_details.each do |order| %>
+          <tr>
+            <td><%= link_to customers_order_detail_path(order),class: "text-dark" do %>
+              <%= order.day.strftime('%Y/%m/%d') %>
+              <% end %>
+            </td>
+            <td><%= link_to order.salon.name, customers_salon_path(order.salon_id),class: "text-dark" %></td>
+            <td><%= order.menu.name %></td>
+            <td></td>
+            <% end %>
+        <% else %>
+            <td>スタイリング履歴はありません</td>
+        <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

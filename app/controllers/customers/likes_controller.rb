@@ -9,11 +9,10 @@ class Customers::LikesController < Customers::ApplicationController
     like = Like.new
     like.customer_id = current_customer.id
     like.image_id = params[:image_id]
-
-    if like.save!
+    if like.save
       redirect_to request.referer
     else
-      render 'cutomers/images/index'
+      render 'customers/images/index'
     end
   end
 

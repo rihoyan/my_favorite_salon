@@ -1,26 +1,40 @@
 <div class="container">
   <div class="row mt-3">
-    <div class="col-lg-5">
-      <%= @customer.nickname %></br>
-      <%= attachment_image_tag @customer, :profile_image, size:"300x200", fallback: "woman.png", class: "border border-secondary rounded-circle" %>
+    <div class="col-lg-5 ml-1">
+      <h4><%= @customer.nickname %>さん、こんにちは！</h4></br>
+      <div class="profile_image_plus">
+      <%= attachment_image_tag @customer, :profile_image, size:"300x300", fallback: "woman.png", class: "border border-secondary rounded-circle" %>
+        <%= form_with model: @customer, url: customers_path, local: true do |f| %>
+            <div class="plus row">
+              <div class= "col">
+                <%= f.label :profile_image, class: "far fa-plus-square fa-3x" do %>
+                  <%= f.file_field :profile_image, style: "display: none;" %>
+                <% end %>
+              </div>
+              <div class= "col">
+                <%= f.submit "画像変更", class: "btn btn-outline-dark" %>
+              </div>
+            </div>
+        <% end %>
+        </div>
     </div>
-    <div class="col-lg-7">
-      <div class="">
-        <p><%= link_to "予約する", step1_reservations_path %></p>
-      </div>
-      <div class="">
-        <p><%= link_to "My 美容院", favorites_index_path %></p>
-      </div>
-      <div class="">
-        <p>スタイリング履歴</p>
-      </div>
-      <div class="">
-        <p>Favorite</br>
-            Style</p>
-      </div>
-      <div class="">
-        <%= link_to "基本情報変更", edit_customers_path %>
-      </div>
+
+    <div class="col-lg-6 mt-5">
+        <%= link_to step1_reservations_path, class: "w-100 -flex btn btn-outline-dark btn-mypage" do %>
+          <i class="fas fa-star fa-lg"> 予約する</i>
+        <% end %>
+        <%= link_to favorites_index_path, class: "w-100 mt-2 btn btn-outline-dark btn-mypage" do %>
+          <i class="far fa-bookmark fa-lg"> My 美容院</i>
+        <% end %>
+        <%= link_to  reservations_path,class: "w-100 mt-2 btn btn-outline-dark btn-mypage" do%>
+          <i class="fas fa-history fa-lg"> 予約履歴</i>
+        <% end %>
+        <%= link_to customers_likes_path,class: "w-100 mt-2 btn btn-outline-dark btn-mypage" do %>
+          <i class="fas fa-heart fa-lg"> favorite style</i>
+        <% end %>
+        <%= link_to edit_customers_path, class: "w-100 mt-2 btn btn-outline-dark btn-mypage" do %>
+          <i class="fas fa-exchange-alt fa-lg"> 基本情報変更</i>
+        <% end %>
     </div>
   </div>
 </div>

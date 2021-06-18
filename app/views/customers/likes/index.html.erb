@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row my-4">
-    <% @likes.each do |like| %>
-      <%= attachment_image_tag like, :image, size: "300x300", fallback: "logo.png" %>
+    <% current_customer.liked_images.each do |like| %>
+      <%= attachment_image_tag like, :style_image, size: "300x300", fallback: "logo.png" %>
     <% end %>
   </div>
 </div>

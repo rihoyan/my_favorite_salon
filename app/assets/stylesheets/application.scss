@@ -57,6 +57,11 @@ body{
   font-size: 20px;
 }
 
+.btn-mypage{
+  height: 50px;
+}
+
+
 .liked {
  width: 25px;
  height: 30px;
@@ -69,6 +74,20 @@ body{
  width: 25px;
  height: 30px;
  font-size: 25px;
- color: #f2f2f2;
+ color: #454441;
  margin-left: 20px;
  }
+
+ .font-small {
+  font-size: 1.0rem;
+}
+
+.profile_image_plus{
+    position: relative;
+}
+
+.plus{
+    position: absolute;
+    top: 85%;
+    left: 55%;
+}

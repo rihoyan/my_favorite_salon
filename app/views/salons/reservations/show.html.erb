@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row my-4">
+    <h3 class="mr-5">| 予約詳細</h3>
+    <%= link_to "スタイリング登録",salons_path(id: params[:id]),class: "btn btn-dark" %>
+  </div>
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th>参考画像</th>
+        <td><%= attachment_image_tag @reservation,:ref_image, size: "200x200",fallback: "logo.png" %></td>
+      </tr>
+      <tr>
+        <th>日時</th>
+        <td><%= @reservation.day.strftime('%Y/%m/%d') %> <%= @reservation.start_time.strftime('%H:%M')%>〜</td>
+      </tr>
+      <tr>
+        <th>氏名</th>
+        <td><%= @reservation.customer.last_name %><%= @reservation.customer.first_name %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @reservation.telephone_number %></td>
+      </tr>
+      <tr>
+        <th>メニュー</th>
+        <td><%= @reservation.menu.name %></td>
+      </tr>
+      <tr>
+        <th>参考コメント</th>
+        <td><%= @reservation.ref_comment %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <h3>| favorite style</h3>
+  </div>
+  <div class="row my-4">
+    <% @reservation.customer.liked_images.each do |like| %>
+      <%= attachment_image_tag like, :style_image, size: "300x300", fallback: "logo.png" %>
+    <% end %>
+  </div>
+
+</div>

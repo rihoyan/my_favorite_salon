@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col-12">
+      <h3>| 予約状況</h3>
+      <h4 class="my-3">本日の予約は<%= @today_reserv.count %>名様です</h4>
+      <table class="table">
+        <tr>
+          <th>日にち</th>
+          <th>開始時間</th>
+          <th>氏名</th>
+          <th>電話番号</th>
+        </tr>
+        <% @reservations.each do |reserv| %>
+        <tr>
+          <td><%= reserv.day.strftime('%Y/%m/%d') %></td>
+          <td><%= link_to reserv.start_time.strftime('%H:%M'),salons_reservation_path(reserv), class: "text-success" %></td>
+          <td><%= reserv.customer.last_name %><%= reserv.customer.first_name %></td>
+          <td><%= reserv.customer.telephone_number %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

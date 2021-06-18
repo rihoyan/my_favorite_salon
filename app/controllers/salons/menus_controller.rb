@@ -1,4 +1,5 @@
 class Salons::MenusController < Salons::ApplicationController
+  before_action :authenticate_salon!
 
   def new
     @menu = Menu.new

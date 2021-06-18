@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_16_064858) do
+ActiveRecord::Schema.define(version: 2021_06_17_124227) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2021_06_16_064858) do
 
   create_table "images", force: :cascade do |t|
     t.integer "salon_id"
-    t.string "image_id"
+    t.string "style_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["salon_id"], name: "index_images_on_salon_id"
@@ -109,16 +109,14 @@ ActiveRecord::Schema.define(version: 2021_06_16_064858) do
   create_table "reservations", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "salon_id", null: false
-    t.date "date", null: false
+    t.date "day", null: false
     t.time "start_time", null: false
-    t.time "end_time"
     t.string "ref_image_id"
     t.text "ref_comment"
     t.string "telephone_number", null: false
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "time", null: false
     t.integer "menu_id", null: false
     t.index ["customer_id"], name: "index_reservations_on_customer_id"
     t.index ["salon_id"], name: "index_reservations_on_salon_id"

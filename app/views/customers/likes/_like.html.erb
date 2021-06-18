@@ -1,9 +1,9 @@
 <% if image.liked_by?(current_customer) %>
    <%= link_to customers_image_add_path(image), method: :delete do %>
-       <i class="fas fa-heart fa-5x icon-btn liked"></i>
+       <i class="fas fa-heart fa-5x liked"></i>
    <% end %>
 <% else %>
    <%= link_to customers_image_add_path(image), method: :post do %>
-       <i class="fas fa-heart icon-btn fa-5x  not-like"></i>
+       <i class="far fa-heart fa-5x not-like"></i>
    <% end %>
 <% end %>

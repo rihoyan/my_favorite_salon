@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   devise_for :admins,skip: :registrations,controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
-    registrations: 'admins/registrations'
   }
 
   devise_for :customers,skip: :registrations,controllers: {
@@ -26,11 +25,11 @@ Rails.application.routes.draw do
   end
 
   scope module: :customers do
-    resource :customers, only: [:show, :edit, :update]
+    resource :customers, only: [:show, :edit, :update, :create]
     patch 'customers/destroy' => 'customers#destroy'
     get 'customers/destroy' => 'customers#confirm'
     get 'favorites/index' => 'favorites#index'
-    resources :reservations ,only: [:index, :show,:create] do
+    resources :reservations ,only: [:index, :show, :create, :update] do
       collection do
         get 'step1'
         get 'step2'
@@ -51,6 +50,7 @@ end
       delete '/add' => 'likes#destroy'
     end
     resources :likes , only: [:index]
+    resources :order_details, only: [:show]
   end
 
   namespace :salons do
@@ -64,5 +64,9 @@ end
     end
     resources :menus, except: [:show]
     resources :images, except: [:show, :edit, :update,:new]
+    resources :reservations, only: [:index, :show]
+    resources :order_details, only: [:create, :show]
+    get 'order_details/new/:id' => 'order_details#new'
+
   end
 end

@@ -3,27 +3,44 @@
     <%= attachment_image_tag @salon, :salon_image ,size:"600x200",fallback: "logo.png" %>
   </div>
 
-  <% if @salon.favorited_by?(current_customer) %>
-    <%= link_to "登録解除", customers_salon_favorites_path(@salon),method: :delete %>
-  <% else %>
-    <%= link_to "お気に入り登録", customers_salon_favorites_path(@salon),method: :post %>
-  <% end %>
-  <table class="table">
-    <tr>
-      <th>サロン名</th>
-      <td><%= @salon.name %></td>
-      <th>場所</th>
-      <td><%= @pref.name %><%= @city.city_name %><%= @salon.address %>
-    </tr>
-    <tr>
-      <th>営業時間</th>
-      <td><%= simple_time(@salon.start_time) %>〜<%= simple_time(@salon.end_time) %></td>
-      <th>スタイリスト数</th>
-      <td><%= @salon.stylists %>人</td>
-      <th>席数</th>
-      <td><%= @salon.seats %>席</td>
-    </tr>
-  </table>
+  <div class="row my-4">
+    <h1 class="col"><%= @salon.name %></h1>
+    <div class="col">
+      <% if @salon.favorited_by?(current_customer) %>
+        <%= link_to "お気に入りから削除", customers_salon_favorites_path(@salon),method: :delete, class: "btn btn-dark" %>
+      <% else %>
+        <%= link_to "お気に入り登録", customers_salon_favorites_path(@salon),method: :post,class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="rounded p-5" style="background-color: #f5d973;">
+    <div class="row my-4">
+      <i class="fas fa-map-pin mr-3"> <%= @pref.name %><%= @city.city_name %><%= @salon.address %></i>
+      <i class="fas fa-phone-alt mr-3"> TEL: <%= @salon.telephone_number %></i>
+    </div>
+    <div class="row my-4">
+      <i class="far fa-clock mr-3"> 営業時間: <%= simple_time(@salon.start_time) %>〜<%= simple_time(@salon.end_time) %></i>
+      <i class="far fa-user mr-3"> スタイリスト数: <%= @salon.stylists %>人</i>
+      <i class="fas fa-chair"> 席数: <%= @salon.seats %>席</i>
+    </div>
+  </div>
+
+  <div class="row my-4">
+    <%= @salon.introduction %>
+  </div>
+  <div class="row">
+    <% if @images.present? %>
+      <% @images.last(4).each do |image| %>
+        <div class="col">
+          <%= attachment_image_tag(image, :style_image, size: "200x200", fallback: "logo.png") %>
+        </div>
+      <% end %>
+    <% else %>
+        スタイリング画像はありません
+    <% end %>
+  </div>
+
   <table class="table my-4">
     <tr>
       <th>メニュー</th>
@@ -32,12 +49,9 @@
       <% @salon.menus.each do |menu| %>
     <tr>
       <td><%= menu.name %></td>
-      <td><%= menu.time %></td>
-      <td><%= menu.price %></td>
+      <td><%= menu.time %>分</td>
+      <td><%= menu.price.to_s(:delimited) %>円</td>
       <% end %>
-    </tr>
-    <tr>
-      <td><%= @salon.introduction %></td>
     </tr>
   </table>
 </div>

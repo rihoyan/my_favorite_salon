@@ -1,0 +1,2 @@
+module Salons::ReservationsHelper
+end

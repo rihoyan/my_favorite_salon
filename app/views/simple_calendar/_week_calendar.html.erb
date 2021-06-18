@@ -41,7 +41,7 @@
                 <% if check_reservation(@reservations, date, time) %>
                   <%= '×' %>
                 <% else %>
-                  <%= link_to step3_reservations_path(date: @day, time: @time) do %>
+                  <%= link_to step3_reservations_path(date: date, time: time) do %>
                     <%= '○' %>
                   <% end %>
                 <% end %>
