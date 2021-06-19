@@ -72,3 +72,7 @@ gem "pry-byebug"
 gem "jquery-rails"
 gem 'ransack'
 gem "simple_calendar", "~> 2.0"
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
