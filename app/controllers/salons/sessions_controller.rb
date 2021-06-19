@@ -17,7 +17,7 @@ class Salons::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    new_salons_menu_path(current_salon)
+    salons_reservations_path(current_salon)
   end
 
   def after_sign_out_path_for(resource)

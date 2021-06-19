@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row my-4">
     <h3 class="mr-5">| 予約詳細</h3>
-    <%= link_to "スタイリング登録",salons_path(id: params[:id]),class: "btn btn-dark" %>
+    <% if @orderdetail.present? %>
+      <%= link_to "登録詳細", salons_order_detail_path(@orderdetail.id),class: "btn btn-outline-dark" %>
+    <% else %>
+      <%= link_to "スタイリング登録",salons_path(id: params[:id]),class: "btn btn-dark" %>
+    <% end %>
   </div>
   <div class="row">
     <table class="table">

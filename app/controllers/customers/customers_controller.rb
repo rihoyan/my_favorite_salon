@@ -11,8 +11,8 @@ class Customers::CustomersController < Customers::ApplicationController
   end
 
   def create
-    customer = Customer.new
-    if customer.save!(customer_params)
+    customer = Customer.new(customer_params)
+    if customer.save!
       redirect_to customers_path
     else
       render 'show', danger: "画像登録に失敗しました"

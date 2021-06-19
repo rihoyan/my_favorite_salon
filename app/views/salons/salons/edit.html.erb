@@ -1,2 +1,79 @@
-<h1>Salons::Salons#edit</h1>
-<p>Find me in app/views/salons/salons/edit.html.erb</p>
+<div class="container">
+  <h3 class="title my-4 text-center">＼　　　基本情報変更　　　／</h3>
+
+  <div class="form mx-auto" style="width: 700px;">
+  <%= form_with model: @salon, url: salons_salons_path, local: true do |f| %>
+
+    <div class="form_group row mt-3">
+        <%= f.label :name, "店舗名", class: "col-lg-4" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name",class: "col-lg-4 form-control" %>
+      </div>
+
+      <div class="form_group row mt-3">
+        <%= f.label :name_kana,"店舗名(カナ)", class: "col-lg-4" %>
+        <%= f.text_field :name_kana, autocomplete: "name_kana", class: "col-lg-4 form-control" %>
+      </div>
+
+      <div class="form_group row mt-3">
+        <%= f.label :prefecture_id, "住所(県)", class: "col-lg-4" %>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "県を選択してください"},id: "pref-form") %>
+      </div>
+
+      <div class="form_group row mt-3">
+        <%= f.label :municipality_id, "住所(市区町村)", class: "col-lg-4" %>
+        <%= f.collection_select(:municipality_id, Municipality.all, :id, :city_name, {prompt: "市区町村を選択してください"},id: "city-form") %>
+      </div>
+
+      <div class="form_group row mt-3">
+        <%= f.label :address, "住所(それ以降)", class: "col-lg-4" %>
+        <%= f.text_field :address, autocomplete: "address", class: "col-lg-4 form-control" %>
+      </div>
+
+      <div class="form_group row mt-3">
+        <%= f.label :telephone_number,"電話番号", class: "col-lg-4" %>
+        <%= f.text_field :telephone_number, autocomplete: "phone_number", class: "col-lg-4 form-control" %>
+      </div>
+
+      <div class="form_group row mt-3">
+        <%= f.label :email, "メールアドレス", class: "col-lg-4" %>
+        <%= f.email_field :email, autocomplete: "email", class: "col-lg-4 form-control" %>
+      </div>
+
+      <div class="form_group row mt-3">
+      <%= f.label :staff_name, "責任者名", class: "col-lg-4" %>
+      <%= f.text_field :staff_name, autofocus: true, autocomplete: "staff_name",class: "col-lg-4 form-control" %>
+    </div>
+
+    <div class="form_group row mt-3">
+      <%= f.label :start_time,"営業開始時間", class: "col-lg-4" %>
+      <%= f.time_field :start_time, autocomplete: "start_time", class: "col-lg-4 form-control" %>
+    </div>
+
+    <div class="form_group row mt-3">
+      <%= f.label :end_time,"営業終了時間", class: "col-lg-4" %>
+      <%= f.time_field :end_time, autocomplete: "end_time", class: "col-lg-4 form-control" %>
+    </div>
+
+    <div class="form_group row mt-3">
+      <%= f.label :seats,"シート数", class: "col-lg-4" %>
+      <%= f.number_field :seats, autocomplete: "seats", class: "col-lg-4 form-control" %>
+    </div>
+
+    <div class="form_group row mt-3">
+      <%= f.label :stylists,"スタイリスト数", class: "col-lg-4" %>
+      <%= f.number_field :stylists, autocomplete: "stylists", class: "col-lg-4 form-control" %>
+    </div>
+
+    <div class="form_group row mt-3">
+      <%= f.label :introduction,"店舗説明", class: "col-lg-4" %>
+      <%= f.text_area :introduction, autocomplete: "introduction", class: "col-lg-4 form-control" %>
+    </div>
+
+    <div class="actions mt-3">
+      <%= f.submit "更新", class: "form-control btn btn-outline-dark" %>
+    </div>
+  <% end %>
+
+  <%= link_to "戻る", :back %>
+
+</div>

@@ -9,9 +9,8 @@ class Salons::OrderDetailsController < Salons::ApplicationController
 
   def create
     order_detail = OrderDetail.new(reservation_id: session[:reservation_id])
-    binding.pry
-    if order_detail.save!(order_detail_params)
-      redirect_to salons_order_detail(order_detail)
+    if order_detail.update!(order_detail_params)
+      redirect_to salons_order_detail_path(order_detail)
     else
       render 'new', danger: "登録に失敗しました"
     end

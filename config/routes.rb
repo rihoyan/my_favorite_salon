@@ -67,6 +67,7 @@ end
     resources :reservations, only: [:index, :show]
     resources :order_details, only: [:create, :show]
     get 'order_details/new/:id' => 'order_details#new'
+    resource :salons, only: [:edit, :update, :create]
 
   end
 end

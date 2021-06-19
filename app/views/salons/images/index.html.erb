@@ -4,7 +4,7 @@
 
     <%= form_with model: @image, url: salons_images_path,local: true do |f| %>
       <div class="form_group row mt-3">
-        <%= f.attachment_field :image %>
+        <%= f.attachment_field :style_image %>
         <%= f.submit "登録", class: "btn btn-outline-dark" %>
       </div>
     <% end %>
@@ -18,7 +18,7 @@
             <div class="col-lg-3">
               <div class="card" style="width: 18rem;">
                 <div class="card-img-top">
-                  <%= attachment_image_tag(image, :image, :fill, 300, 300, fallback: "logo.png") %>
+                  <%= attachment_image_tag(image, :style_image, :fill, 300, 300, fallback: "logo.png") %>
                 </div>
                 <div class="card-body">
                   <i class="fas fa-heart fa-5x icon-btn liked"></i><%= image.likes.count %>件

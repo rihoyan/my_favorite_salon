@@ -2,8 +2,8 @@
 
 class Customers::RegistrationsController < Devise::RegistrationsController
    before_action :configure_permitted_parameters, only: [:create]
-   layout 'customers/application'
    before_action :configure_account_update_params, only: [:update]
+   layout 'customers/application'
 
   # GET /resource/sign_up
   # def new

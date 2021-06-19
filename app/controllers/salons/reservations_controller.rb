@@ -8,5 +8,6 @@ class Salons::ReservationsController < Salons::ApplicationController
 
   def show
     @reservation = Reservation.find(params[:id])
+    @orderdetail = OrderDetail.find_by(reservation_id: params[:id])
   end
 end

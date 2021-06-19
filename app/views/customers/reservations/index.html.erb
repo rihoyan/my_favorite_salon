@@ -10,7 +10,7 @@
           <th style="width: 20%">メニュー</th>
           <th style="width: 10%"></th>
         </tr>
-        
+
         <% if @reservations.present? %>
           <% @reservations.each do |reserv| %>
           <tr>
@@ -45,10 +45,10 @@
           <% @order_details.each do |order| %>
           <tr>
             <td><%= link_to customers_order_detail_path(order),class: "text-dark" do %>
-              <%= order.day.strftime('%Y/%m/%d') %>
+              <%= order.reservation.day.strftime('%Y/%m/%d') %>
               <% end %>
             </td>
-            <td><%= link_to order.salon.name, customers_salon_path(order.salon_id),class: "text-dark" %></td>
+            <td><%= link_to order.reservation.salon.name, customers_salon_path(order.reservation.salon_id),class: "text-dark" %></td>
             <td><%= order.menu.name %></td>
             <td></td>
             <% end %>

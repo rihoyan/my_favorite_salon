@@ -1,57 +1,5 @@
 <div class="container">
   <h3 class="title my-4 text-center">＼　　　登録はこちらから　　　／</h3>
-
-  <div class="form mx-auto" style="width: 700px;">
-    <%= form_with model: @salon, url: salon_registration_path, local: true do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-
-      <div class="form_group row mt-3">
-        <%= f.label :name, "店舗名", class: "col-lg-4" %>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name",class: "col-lg-4 form-control" %>
-      </div>
-
-      <div class="form_group row mt-3">
-        <%= f.label :name_kana,"店舗名(カナ)", class: "col-lg-4" %>
-        <%= f.text_field :name_kana, autocomplete: "name_kana", class: "col-lg-4 form-control" %>
-      </div>
-
-      <div class="form_group row mt-3">
-        <%= f.label :address, "住所", class: "col-lg-4" %>
-        <%= f.text_field :address, autocomplete: "address",class: "col-lg-4 form-control" %>
-      </div>
-
-      <div class="form_group row mt-3">
-        <%= f.label :phone_number,"電話番号", class: "col-lg-4" %>
-        <%= f.text_field :phone_number, autocomplete: "phone_number", class: "col-lg-4 form-control" %>
-      </div>
-
-      <div class="form_group row mt-3">
-        <%= f.label :email, "メールアドレス", class: "col-lg-4" %>
-        <%= f.email_field :email, autocomplete: "email", class: "col-lg-4 form-control" %>
-      </div>
-
-      <div class="form_group row mt-3">
-        <div class="col-lg-4">
-          <%= f.label :password, "パスワード" %>
-        </div>
-        <%= f.password_field :password, autocomplete: "new-password",placeholder: "6文字以上", class: "col-lg-4 form-control" %>
-      </div>
-
-      <div class="form_group row mt-3">
-        <%= f.label :password_confirmation, "パスワード(確認)", class: "col-lg-4" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-lg-4 form-control" %>
-      </div>
-
-      <div class="form_group row mt-3">
-        <%= f.label :salon_image_id,"イメージ写真", class: "col-lg-4" %>
-        <%= f.file_field :salon_image_id, class: "col-lg-4" %>
-      </div>
-
-      <div class="actions mt-3">
-        <%= f.submit "登録", class: "form-control btn btn-outline-dark" %>
-      </div>
-    <% end %>
-  </div>
 </div>
 
 <%= render "salons/shared/links" %>

@@ -9,11 +9,11 @@
       <table class="table col">
         <tr>
           <th>日時</th>
-          <td><%= @order_detail.day.strftime('%Y/%m/%d') %> <%= @order_detail.start_time.strftime('%H:%M')%>〜</td>
+          <td><%= @order_detail.reservation.day.strftime('%Y/%m/%d') %> <%= @order_detail.reservation.start_time.strftime('%H:%M')%>〜</td>
         </tr>
         <tr>
           <th>店舗</th>
-          <td><%= link_to @order_detail.salon.name, customers_salon_path(@order_detail.salon_id) %></td>
+          <td><%= link_to @order_detail.reservation.salon.name, customers_salon_path(@order_detail.reservation.salon_id) %></td>
         </tr>
         <tr>
           <th>メニュー</th>

@@ -7,7 +7,7 @@ class Salons::ImagesController < Salons::ApplicationController
   end
 
   def create
-    image = Image.new(image: image_params[:image], salon_id: current_salon.id)
+    image = Image.new(style_image: image_params[:style_image], salon_id: current_salon.id)
     if image.save!
       redirect_to request.referer, success: "画像投稿に成功しました"
     else
@@ -27,7 +27,7 @@ class Salons::ImagesController < Salons::ApplicationController
   private
 
   def image_params
-    params.require(:image).permit(:image, :salon_id)
+    params.require(:image).permit(:style_image, :salon_id)
   end
 
 end
