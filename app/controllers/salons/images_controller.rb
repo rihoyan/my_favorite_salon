@@ -8,9 +8,11 @@ class Salons::ImagesController < Salons::ApplicationController
 
   def create
     image = Image.new(style_image: image_params[:style_image], salon_id: current_salon.id)
-    if image.save!
+    if image.save
       redirect_to request.referer, success: "画像投稿に成功しました"
     else
+      @image = image
+      @images = Image.where(salon_id: current_salon.id)
       render 'index'
     end
   end

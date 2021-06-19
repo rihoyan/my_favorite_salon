@@ -1,0 +1,9 @@
+<% if menu.errors.any? %>
+  <div class="error">
+    <ul>
+      <% menu.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

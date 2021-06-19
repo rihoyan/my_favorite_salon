@@ -8,6 +8,9 @@ class Customer < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_images, through: :likes, source: :image
-  
-  
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :telephone_number, presence: true
+  validates :telephone_number, uniqueness: true
+  validates :telephone_number, numericality: true
 end

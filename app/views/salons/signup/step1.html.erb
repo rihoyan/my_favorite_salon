@@ -1,6 +1,6 @@
 <div class="container">
   <h3 class="title my-4 text-center">会員情報登録</h3>
-
+  <%= render 'layouts/error_messages', model: f.object %>
   <div class="form mx-auto" style="width: 700px;">
     <%= form_with model: @salon, url: step2_salons_signup_index_path,method: :get, local: true do |f| %>
 

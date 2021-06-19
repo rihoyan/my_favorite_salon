@@ -90,6 +90,7 @@ class Salons::SignupController < ApplicationController
       :seats,
       :stylists,
       :introduction,
-      :salon_image)
+      :salon_image
+      )
   end
 end

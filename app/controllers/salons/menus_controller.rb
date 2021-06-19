@@ -8,10 +8,10 @@ class Salons::MenusController < Salons::ApplicationController
 
   def create
     menu = Menu.new(name: menu_params[:name], time: menu_params[:time], price: menu_params[:price], salon_id: current_salon.id)
-    if menu.save!
-      redirect_to request.referer
+    if menu.save
+      redirect_to new_salons_menu_path
     else
-      @menu = Menu.new
+      @menu = menu
       @menus = Menu.where(salon_id: current_salon.id)
       render 'new', danger: "登録に失敗しました"
     end
@@ -23,7 +23,7 @@ class Salons::MenusController < Salons::ApplicationController
 
   def update
     menu = Menu.find(params[:id])
-    if menu.update!(menu_params)
+    if menu.update(menu_params)
       redirect_to new_salons_menu_path, success: "メニューを変更しました"
     else
       render 'edit', danger: "メニューの変更に失敗しました"
@@ -32,8 +32,8 @@ class Salons::MenusController < Salons::ApplicationController
 
   def destroy
     menu = Menu.find(params[:id])
-    if menu.destroy!
-      redirect_to request.referer
+    if menu.destroy
+      redirect_to new_salons_menu_path
     else
       render 'new', danger: "メニューの削除に失敗しました"
     end
