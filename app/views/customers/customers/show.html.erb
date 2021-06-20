@@ -1,22 +1,14 @@
 <div class="container">
   <div class="row mt-3">
+
     <div class="col-lg-5 ml-1">
       <h4><%= @customer.nickname %>さん、こんにちは！</h4></br>
       <div class="profile_image_plus">
-      <%= attachment_image_tag @customer, :profile_image, size:"300x300", fallback: "woman.png", class: "border border-secondary rounded-circle" %>
-        <%= form_with model: @customer, url: customers_path, local: true do |f| %>
-            <div class="plus row">
-              <div class= "col">
-                <%= f.label :profile_image, class: "far fa-plus-square fa-3x" do %>
-                  <%= f.file_field :profile_image, style: "display: none;" %>
-                <% end %>
-              </div>
-              <div class= "col">
-                <%= f.submit "画像変更", class: "btn btn-outline-dark" %>
-              </div>
-            </div>
-        <% end %>
-        </div>
+        <%= attachment_image_tag @customer, :profile_image, size:"300x300", fallback: "woman.png", class: "border border-secondary rounded-circle" %>
+          <div>
+            <%= link_to "画像変更",customers_prf_image_path, class: "btn btn-outline-dark" %>
+          </div>
+      </div>
     </div>
 
     <div class="col-lg-6 mt-5">

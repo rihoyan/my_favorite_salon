@@ -48,7 +48,7 @@ class Salons::SignupController < ApplicationController
       introduction: session[:introduction]
       )
 
-      if @salon.save!
+      if @salon.save
         sign_in Salon.find(@salon.id)
         redirect_to done_salons_signup_index_path
       else
@@ -63,7 +63,7 @@ class Salons::SignupController < ApplicationController
 
   def update
     salon = Salon.find(current_salon.id)
-    if salon.update!(salon_params)
+    if salon.update(salon_params)
       sign_in Salon.find(session[:id]) unless salon_signed_in?
       redirect_to new_salons_menu_path, success: "登録できました。メニューの登録もしましょう"
     else

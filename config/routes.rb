@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     patch 'customers/destroy' => 'customers#destroy'
     get 'customers/destroy' => 'customers#confirm'
     get 'favorites/index' => 'favorites#index'
+    get 'customers/prf_image' =>'customers#prf_image'
     resources :reservations ,only: [:index, :show, :create, :update] do
       collection do
         get 'step1'

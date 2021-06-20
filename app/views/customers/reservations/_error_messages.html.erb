@@ -1,0 +1,9 @@
+<% if rsv.errors.any? %>
+  <div class="error">
+    <ul>
+      <% rsv.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -1,31 +1,31 @@
 <div class="container">
-  <div class="row mt-4">
-      <h3 class="text-center"><span>02</span>希望日を選んでください</h3>
-  </div>
-    <div class="row">
-        <%= form_with model: @rsv, url: step3_reservations_path,method: :get, local: true do |f| %>
-          <div class="form_group row">
-            <%= f.label :day, "予約希望日", class: "control-label" %><br />
-            <%= f.date_field :day, class: "form-control" %>
-          </div>
-          <div class="form_group row mt-3">
-            <%= f.label :start_time,"希望時間", class: "control-label" %>
-            <%= f.time_field :start_time, class: "form-control" %>
-          </div>
-        <%= f.submit "メニュー選択へ",class: "mt-2 form-control btn-btn-outline-dark" %>
+  <div class="row my-4">
+    <div class="col-12 text-center">
+      <h3><span>02</span>メニューを選んでください</h3>
+      <p>施術時間は目安です。髪の長さにより前後します。</p>
 
-      <% end %>
-    </div>
+      <%= render 'customers/reservations/error_messages', rsv: @rsv %>
 
-    <div class="row mt-3">
-      <%= month_calendar events: @reservations do |date, reservations| %>
-        <%= date %>
-          <% reservations.each do |reservation| %>
-          <div>
-            <%= reservation.start_time.hour %>:<%= reservation.start_time.min %>
-          </div>
-          <% end %>
-    </div>
-      <% end %>
+        <%= form_with model: @rsv, url: step3_reservations_path,method: :get, local:true do |f| %>
+          <table class="table" >
+            <tr>
+              <th>選択</th>
+              <th>メニュー名</th>
+              <th>施術時間(目安)</th>
+              <th>料金(税込)</th>
+            </tr>
+            <% @menus.each do |menu| %>
+              <tr>
+                <% f.hidden_field :menu_id, value: menu.id %>
+                <td><%= f.radio_button(:menu_id, menu.id) %></td>
+                <td><%= menu.name %></td>
+                <td><%= menu.time %>分</td>
+                <td><%= menu.price.to_s(:delimited) %>円〜</td>
+              </tr>
+              <% end %>
+          </table>
+          <%= f.submit "日時選択へ進む", class: "btn btn-outline-dark" %>
+        <% end %>
     </div>
   </div>
+</div>

@@ -12,9 +12,10 @@ class Customers::CustomersController < Customers::ApplicationController
 
   def create
     customer = Customer.new(customer_params)
-    if customer.save!
+    if customer.save
       redirect_to customers_path
     else
+      @customer = Customer.new
       render 'show', danger: "画像登録に失敗しました"
     end
   end
@@ -25,11 +26,16 @@ class Customers::CustomersController < Customers::ApplicationController
 
   def update
     customer = current_customer
-    if customer.update!(customer_params)
+    if customer.update(customer_params)
       redirect_to customers_path, success: "更新しました"
     else
+      @customer = current_customer
       render 'edit', danger: "更新に失敗しました"
     end
+  end
+
+  def prf_image
+    @customer = current_customer
   end
 
   def destroy

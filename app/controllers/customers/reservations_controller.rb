@@ -1,5 +1,6 @@
 class Customers::ReservationsController < Customers::ApplicationController
   before_action :authenticate_customer!
+  before_action :validation_check_step2, only: :step3
 
   def show
     @reservation = Reservation.find(params[:id])
@@ -18,21 +19,35 @@ class Customers::ReservationsController < Customers::ApplicationController
 
   def step2
     @rsv = Reservation.new
-    @reservations = Reservation.where(salon_id: session[:salon_id])
+    @menus = Menu.where(salon_id: session[:salon_id])
     session[:salon_id] = params[:salon_id]
+  end
+
+  def validation_check_step2
+    session[:menu_id] = params[:reservation][:menu_id]
+    @rsv = Reservation.new(
+      customer_id: current_customer.id,
+      salon_id: session[:salon_id],
+      menu_id: session[:menu_id],
+      day: "2050-12-31",
+      start_time: "09:00",
+      telephone_number: "09099998888",
+      )
+      @favorites = Favorite.where(customer_id: current_customer.id)
+      render 'step1' unless @rsv.valid?
   end
 
   def step3
     @rsv = Reservation.new
-    session[:start_time] = params[:reservation][:start_time]
-    session[:day] = params[:reservation][:day]
-    @menus = Menu.where(salon_id: session[:salon_id])
+    @reservations = Reservation.where(salon_id: session[:salon_id])
+
   end
 
   def step4
     @rsv = Reservation.new
     @customer = Customer.find(current_customer.id)
-    session[:menu_id] = params[:reservation][:menu_id]
+    session[:start_time] = params[:reservation][:start_time]
+    session[:day] = params[:reservation][:day]
   end
 
   def confirm
@@ -51,11 +66,14 @@ class Customers::ReservationsController < Customers::ApplicationController
       telephone_number: session[:telephone_number],
       menu_id: session[:menu_id]
       )
+      binding.pry
 
-      if @rsv.save!
+      if @rsv.save
         session[:id] = @rsv.id
         redirect_to done_reservations_path, success: "予約が完了しました。参考画像やコメントを送付したい方は以下より送信してください"
       else
+        @rsv = Reservation.new
+        @favorites = Favorite.where(customer_id: current_customer.id)
         render 'step1', danger: "予約に失敗しました。もう一度初めからやり直してください"
       end
   end
