@@ -55,7 +55,7 @@ end
   end
 
   namespace :salons do
-    resources :signup do
+    resources :signup , only: [:create] do
       collection do
         get 'step1'
         get 'step2'
@@ -69,6 +69,7 @@ end
     resources :order_details, only: [:create, :show]
     get 'order_details/new/:id' => 'order_details#new'
     resource :salons, only: [:edit, :update, :create]
+    get 'salons/prf_image' => 'salons#prf_image'
 
   end
 end

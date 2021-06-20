@@ -1,12 +1,7 @@
 <div class="container">
   <h3 class="title my-4 text-center">登録完了</h3>
-  <p>登録が完了しました。まずは、店舗のイメージ画像を登録してください（必須）</p>
+  <p>登録が完了しました。店舗のイメージ画像とメニューを登録してください</p>
 
-    <%= form_with model: @salon, url: reservation_path(@salon), local: true do |f| %>
-      <div class="form_group row mt-3">
-        <%= f.label :salon_image, "店舗イメージ画像", class: "form-label" %>
-        <%= f.attachment_field :salon_image %> ※送信できる画像は1枚のみです
-      </div>
-      <%= f.submit "送信", class: "btn btn-outline-dark" %>
-    <% end %>
+   <%= link_to "メニュー登録",salons_menus_path, class: "btn btn-dark" %>
+   <%= link_to "イメージ画像登録", salons_salons_prf_image_path, class: "btn btn-dark" %>
 </div>
