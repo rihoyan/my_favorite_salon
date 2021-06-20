@@ -1,6 +1,5 @@
 class Customers::ReservationsController < Customers::ApplicationController
   before_action :authenticate_customer!
-  before_action :validation_check_step2, only: :step3
 
   def show
     @reservation = Reservation.find(params[:id])
@@ -23,24 +22,10 @@ class Customers::ReservationsController < Customers::ApplicationController
     session[:salon_id] = params[:salon_id]
   end
 
-  def validation_check_step2
-    session[:menu_id] = params[:reservation][:menu_id]
-    @rsv = Reservation.new(
-      customer_id: current_customer.id,
-      salon_id: session[:salon_id],
-      menu_id: session[:menu_id],
-      day: "2050-12-31",
-      start_time: "09:00",
-      telephone_number: "09099998888",
-      )
-      @favorites = Favorite.where(customer_id: current_customer.id)
-      render 'step1' unless @rsv.valid?
-  end
-
   def step3
     @rsv = Reservation.new
     @reservations = Reservation.where(salon_id: session[:salon_id])
-
+    session[:menu_id] = params[:reservation][:menu_id]
   end
 
   def step4
