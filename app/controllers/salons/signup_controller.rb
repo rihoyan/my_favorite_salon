@@ -49,8 +49,8 @@ class Salons::SignupController < ApplicationController
       )
 
       if @salon.save
-        sign_in Salon.find(@salon.id)
-        redirect_to done_salons_signup_index_path
+        session[:salon_id] = @salon.id
+        redirect_to new_salons_menu_path
       else
         render 'step1', danger: "会員登録に失敗しました。もう一度初めからやり直してください"
       end
@@ -58,7 +58,6 @@ class Salons::SignupController < ApplicationController
 
   def done
     @salon = Salon.find(current_salon.id)
-    session[:id] = @salon.id
   end
 
   def update
