@@ -69,7 +69,7 @@ end
     resources :order_details, only: [:create, :show]
     get 'order_details/new/:id' => 'order_details#new'
     resource :salons, only: [:edit, :update, :create]
-    get 'salons/prf_image' => 'salons#prf_image'
+    get 'salons/salon_image' => 'salons#salon_image'
 
   end
 end
