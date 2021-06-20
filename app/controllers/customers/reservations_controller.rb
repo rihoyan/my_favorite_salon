@@ -51,7 +51,6 @@ class Customers::ReservationsController < Customers::ApplicationController
       telephone_number: session[:telephone_number],
       menu_id: session[:menu_id]
       )
-      binding.pry
 
       if @rsv.save
         session[:id] = @rsv.id
