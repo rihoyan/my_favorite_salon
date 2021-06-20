@@ -1,7 +1,7 @@
 <div class="container">
   <div class="new_menu">
     <h3 class="title my-4">|メニュー登録</h3>
-    
+
     <%= render 'salons/menus/error_messages', menu: @menu %>
     <%= form_with model: @menu,url: salons_menus_path, local: true do |f| %>
 
@@ -26,7 +26,7 @@
   <div class="menu_list">
     <h3 class="title my-4">|メニューリスト</h3>
 
-      <table vlass="table">
+      <table class="table">
         <tr>
           <th>メニュー名</th>
           <th>時間</th>
