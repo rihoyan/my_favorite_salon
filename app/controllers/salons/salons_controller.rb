@@ -40,6 +40,7 @@ class Salons::SalonsController < Salons::ApplicationController
         :seats,
         :staff_name,
         :stylists,
-        :introduction)
+        :introduction,
+        :salon_image)
     end
 end
