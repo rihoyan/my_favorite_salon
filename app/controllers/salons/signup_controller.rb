@@ -57,7 +57,6 @@ class Salons::SignupController < ApplicationController
   end
 
   def done
-    @salon = Salon.find(current_salon.id)
   end
 
   private

@@ -55,7 +55,7 @@ end
   end
 
   namespace :salons do
-    resources :signup , only: [:create] do
+    resources :signup do
       collection do
         get 'step1'
         get 'step2'

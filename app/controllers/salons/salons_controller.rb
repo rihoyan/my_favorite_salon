@@ -12,7 +12,7 @@ class Salons::SalonsController < Salons::ApplicationController
 
   def update
     salon = current_salon
-    if salon.update!(salon_params)
+    if salon.update(salon_params)
       redirect_to salons_reservations_path, success: "更新しました"
     else
       render 'edit', danger: "更新に失敗しました"
