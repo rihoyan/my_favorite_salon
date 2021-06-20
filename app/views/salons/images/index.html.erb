@@ -2,13 +2,14 @@
   <div class="new_menu">
     <h3 class="title my-4">| スタイリング画像登録</h3>
     <%= render 'salons/images/error_messages', image: @image %>
-    
+
     <%= form_with model: @image, url: salons_images_path,local: true do |f| %>
       <div class="form_group row mt-3">
         <%= f.attachment_field :style_image %>
         <%= f.submit "登録", class: "btn btn-outline-dark" %>
       </div>
     <% end %>
+    <p>サロンイメージ画像は<%= link_to "こちら",salons_salons_prf_image_path %>から登録してください</p>
   </div>
 
   <div class="new_menu">

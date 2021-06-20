@@ -10,11 +10,16 @@ class Salons::SalonsController < Salons::ApplicationController
     @salon = current_salon
   end
 
+  def salon_image
+    @salon = current_salon
+  end
+
   def update
     salon = current_salon
     if salon.update(salon_params)
       redirect_to salons_reservations_path, success: "更新しました"
     else
+      @salon = current_salon
       render 'edit', danger: "更新に失敗しました"
     end
   end
