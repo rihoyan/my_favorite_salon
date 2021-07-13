@@ -3,7 +3,6 @@
     <div class="col-12 text-center">
       <h3><span>02</span>メニューを選んでください</h3>
       <p>施術時間は目安です。髪の長さにより前後します。</p>
-
       <%= render 'customers/reservations/error_messages', rsv: @rsv %>
 
         <%= form_with model: @rsv, url: step3_reservations_path,method: :get, local:true do |f| %>

@@ -25,7 +25,21 @@ class Customers::ReservationsController < Customers::ApplicationController
   def step3
     @rsv = Reservation.new
     @reservations = Reservation.where(salon_id: session[:salon_id])
-    session[:menu_id] = params[:reservation][:menu_id]
+    if params[:reservation].present?
+      session[:menu_id] = params[:reservation][:menu_id]
+    else
+      @rsv = Reservation.new(
+      customer_id: current_customer.id,
+      salon_id: session[:salon_id],
+      day: "9999-12-31",
+      start_time: "09:00",
+      telephone_number: "99999999999",
+      menu_id: nil
+      )
+    
+      @menus = Menu.where(salon_id: session[:salon_id])
+      render '/customers/reservations/step2' unless @rsv.valid?
+    end
   end
 
   def step4
